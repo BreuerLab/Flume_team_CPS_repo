@@ -1,7 +1,7 @@
 % CPS parametric setup
 % run it to pre-set the required parameters, e.g. sampling time;
 
-sim_time = 60; % Total duration of simulink experiment, in seconds
+sim_time = 10; % Total duration of simulink experiment, in seconds
 input_heave_meters = 0.00; % Initial heave position in meters
 
 % System parameters
