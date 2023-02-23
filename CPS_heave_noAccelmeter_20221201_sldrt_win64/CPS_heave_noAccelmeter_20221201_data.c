@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_heave_noAccelmeter_20221201".
  *
- * Model version              : 12.2
+ * Model version              : 12.4
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Jan 20 16:37:45 2023
+ * C source code generated on : Wed Jan 25 15:46:41 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -47,11 +47,6 @@ P_CPS_heave_noAccelmeter_20221201_T CPS_heave_noAccelmeter_20221201_P = {
    */
   12.566370614359174,
 
-  /* Variable: input_heave_meters
-   * Referenced by: '<Root>/Unit  Delay'
-   */
-  0.0,
-
   /* Variable: k
    * Referenced by:
    *   '<Root>/Virtual spring (N//m)'
@@ -63,6 +58,7 @@ P_CPS_heave_noAccelmeter_20221201_T CPS_heave_noAccelmeter_20221201_P = {
    * Referenced by:
    *   '<Root>/initial position'
    *   '<Root>/Integrator 2'
+   *   '<Root>/Unit  Delay'
    */
   0.01,
 
@@ -271,13 +267,13 @@ P_CPS_heave_noAccelmeter_20221201_T CPS_heave_noAccelmeter_20221201_P = {
   /* Expression: -tare.signals.values(end,1:6)
    * Referenced by: '<Root>/force bias'
    */
-  { -0.13996043845563935, -0.052632095017874227, -0.23431397027923911,
-    -0.39105580587974403, -0.35250661899364588, 0.27139356764953021 },
+  { -0.1407761131006941, -0.051880703979960724, -0.24511265074557353,
+    -0.39701268917107624, -0.36109398226857004, 0.26095941803545036 },
 
   /* Expression: -tare.signals.values(end,7)
    * Referenced by: '<Root>/accel bias (V)'
    */
-  0.10128981589349095,
+  0.09616437275136179,
 
   /* Expression: -9.81
    * Referenced by: '<Root>/accel V to m//s2'

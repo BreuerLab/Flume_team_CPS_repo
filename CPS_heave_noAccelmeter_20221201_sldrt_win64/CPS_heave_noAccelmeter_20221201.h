@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_heave_noAccelmeter_20221201".
  *
- * Model version              : 12.2
+ * Model version              : 12.4
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Jan 20 16:37:45 2023
+ * C source code generated on : Wed Jan 25 15:46:41 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -1003,9 +1003,6 @@ struct P_CPS_heave_noAccelmeter_20221201_T_ {
   real_T c;                            /* Variable: c
                                         * Referenced by: '<Root>/Virtual damping (kg//s)'
                                         */
-  real_T input_heave_meters;           /* Variable: input_heave_meters
-                                        * Referenced by: '<Root>/Unit  Delay'
-                                        */
   real_T k;                            /* Variable: k
                                         * Referenced by:
                                         *   '<Root>/Virtual spring (N//m)'
@@ -1015,6 +1012,7 @@ struct P_CPS_heave_noAccelmeter_20221201_T_ {
                                         * Referenced by:
                                         *   '<Root>/initial position'
                                         *   '<Root>/Integrator 2'
+                                        *   '<Root>/Unit  Delay'
                                         */
   real_T EncoderInput_InputFilter;   /* Mask Parameter: EncoderInput_InputFilter
                                       * Referenced by: '<Root>/Encoder Input'

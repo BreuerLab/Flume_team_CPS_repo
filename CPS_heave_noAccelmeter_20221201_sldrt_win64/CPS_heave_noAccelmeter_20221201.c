@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_heave_noAccelmeter_20221201".
  *
- * Model version              : 12.2
+ * Model version              : 12.4
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Jan 20 16:37:45 2023
+ * C source code generated on : Wed Jan 25 15:46:41 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -2123,7 +2123,7 @@ void CPS_heave_noAccelmeter_20221201_initialize(void)
 
   /* InitializeConditions for UnitDelay: '<Root>/Unit  Delay' */
   CPS_heave_noAccelmeter_20221201_DW.UnitDelay_DSTATE =
-    -CPS_heave_noAccelmeter_20221201_P.input_heave_meters *
+    -CPS_heave_noAccelmeter_20221201_P.start_position_meters *
     CPS_heave_noAccelmeter_20221201_P.k / CPS_heave_noAccelmeter_20221201_P.M;
 
   /* InitializeConditions for DiscreteIntegrator: '<Root>/Integrator' */
@@ -2335,10 +2335,10 @@ RT_MODEL_CPS_heave_noAccelmeter_20221201_T *CPS_heave_noAccelmeter_20221201(void
   CPS_heave_noAccelmeter_20221201_M->Timing.stepSize1 = 0.001;
 
   /* External mode info */
-  CPS_heave_noAccelmeter_20221201_M->Sizes.checksums[0] = (2955273506U);
-  CPS_heave_noAccelmeter_20221201_M->Sizes.checksums[1] = (545990859U);
-  CPS_heave_noAccelmeter_20221201_M->Sizes.checksums[2] = (2995946953U);
-  CPS_heave_noAccelmeter_20221201_M->Sizes.checksums[3] = (323796900U);
+  CPS_heave_noAccelmeter_20221201_M->Sizes.checksums[0] = (710514615U);
+  CPS_heave_noAccelmeter_20221201_M->Sizes.checksums[1] = (1275604504U);
+  CPS_heave_noAccelmeter_20221201_M->Sizes.checksums[2] = (2531449019U);
+  CPS_heave_noAccelmeter_20221201_M->Sizes.checksums[3] = (3310568189U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -2416,7 +2416,7 @@ RT_MODEL_CPS_heave_noAccelmeter_20221201_T *CPS_heave_noAccelmeter_20221201(void
   CPS_heave_noAccelmeter_20221201_M->Sizes.numSampTimes = (2);/* Number of sample times */
   CPS_heave_noAccelmeter_20221201_M->Sizes.numBlocks = (56);/* Number of blocks */
   CPS_heave_noAccelmeter_20221201_M->Sizes.numBlockIO = (21);/* Number of block outputs */
-  CPS_heave_noAccelmeter_20221201_M->Sizes.numBlockPrms = (140);/* Sum of parameter "widths" */
+  CPS_heave_noAccelmeter_20221201_M->Sizes.numBlockPrms = (139);/* Sum of parameter "widths" */
   return CPS_heave_noAccelmeter_20221201_M;
 }
 

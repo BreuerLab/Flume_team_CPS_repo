@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_heave_noAccelmeter_20221201".
  *
- * Model version              : 12.2
+ * Model version              : 12.4
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Jan 20 16:37:45 2023
+ * C source code generated on : Wed Jan 25 15:46:41 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

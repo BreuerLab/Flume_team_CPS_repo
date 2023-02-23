@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_heave_noAccelmeter_20221201".
  *
- * Model version              : 12.2
+ * Model version              : 12.4
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Jan 20 16:37:45 2023
+ * C source code generated on : Wed Jan 25 15:46:41 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -99,7 +99,7 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&CPS_heave_noAccelmeter_20221201_P.M), 0, 0, 52 },
+  { (char_T *)(&CPS_heave_noAccelmeter_20221201_P.M), 0, 0, 51 },
 
   { (char_T *)(&CPS_heave_noAccelmeter_20221201_P.AnalogOutput1_Channels), 6, 0,
     24 },
