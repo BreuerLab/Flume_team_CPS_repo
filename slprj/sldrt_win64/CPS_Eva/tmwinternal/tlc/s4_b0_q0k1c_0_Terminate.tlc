@@ -1,0 +1,91 @@
+%implements s4_b0_q0k1c_0_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcTerminateFcnOfS3B4 = OpaqueTLCBlockFcn("Terminate", 3, 4, 0, 9, 0)
+%assign tlcTerminateFcnOfS3B5 = OpaqueTLCBlockFcn("Terminate", 3, 5, 0, 9, 1)
+%assign tlcTerminateFcnOfS3B10 = OpaqueTLCBlockFcn("Terminate", 3, 10, 0, 9, 2)
+%assign tlcTerminateFcnOfS3B11 = OpaqueTLCBlockFcn("Terminate", 3, 11, 0, 9, 3)
+%assign tlcTerminateFcnOfS3B14 = OpaqueTLCBlockFcn("Terminate", 3, 14, 0, 9, 4)
+%assign tlcTerminateFcnOfS3B15 = OpaqueTLCBlockFcn("Terminate", 3, 15, 0, 9, 5)
+%assign tlcCleanupRuntimeResourcesFcnOfS3B10 = OpaqueTLCBlockFcn("CleanupRuntimeResources", 3, 10, 0, 9, 6)
+%assign tlcCleanupRuntimeResourcesFcnOfS3B11 = OpaqueTLCBlockFcn("CleanupRuntimeResources", 3, 11, 0, 9, 7)
+%assign tlcCleanupRuntimeResourcesFcnOfS3B14 = OpaqueTLCBlockFcn("CleanupRuntimeResources", 3, 14, 0, 9, 8)
+%assign tlcCleanupRuntimeResourcesFcnOfS3B15 = OpaqueTLCBlockFcn("CleanupRuntimeResources", 3, 15, 0, 9, 9)
+%if !WHITE_SPACE(tlcTerminateFcnOfS3B4)
+/* Terminate for S-Function (sldrtao): '<Root>/Analog Output' */
+%<tlcTerminateFcnOfS3B4>\
+%endif
+%if !WHITE_SPACE(tlcTerminateFcnOfS3B5)
+/* Terminate for S-Function (sldrtao): '<Root>/Analog Output1' */
+%<tlcTerminateFcnOfS3B5>\
+%endif
+%if !WHITE_SPACE(tlcTerminateFcnOfS3B10)
+/* Terminate for ToAsyncQueueBlock generated from: '<Root>/To Workspace' */
+%<tlcTerminateFcnOfS3B10>\
+%endif
+%if !WHITE_SPACE(tlcTerminateFcnOfS3B11)
+/* Terminate for ToAsyncQueueBlock generated from: '<Root>/To Workspace1' */
+%<tlcTerminateFcnOfS3B11>\
+%endif
+%if !WHITE_SPACE(tlcTerminateFcnOfS3B14)
+/* Terminate for ToAsyncQueueBlock generated from: '<Root>/To Workspace3' */
+%<tlcTerminateFcnOfS3B14>\
+%endif
+%if !WHITE_SPACE(tlcTerminateFcnOfS3B15)
+/* Terminate for ToAsyncQueueBlock generated from: '<Root>/To Workspace2' */
+%<tlcTerminateFcnOfS3B15>\
+%endif
+%if !WHITE_SPACE(tlcCleanupRuntimeResourcesFcnOfS3B10)
+/* CleanupRuntimeResources for ToAsyncQueueBlock generated from: '<Root>/To Workspace' */
+%<tlcCleanupRuntimeResourcesFcnOfS3B10>\
+%endif
+%if !WHITE_SPACE(tlcCleanupRuntimeResourcesFcnOfS3B11)
+/* CleanupRuntimeResources for ToAsyncQueueBlock generated from: '<Root>/To Workspace1' */
+%<tlcCleanupRuntimeResourcesFcnOfS3B11>\
+%endif
+%if !WHITE_SPACE(tlcCleanupRuntimeResourcesFcnOfS3B14)
+/* CleanupRuntimeResources for ToAsyncQueueBlock generated from: '<Root>/To Workspace3' */
+%<tlcCleanupRuntimeResourcesFcnOfS3B14>\
+%endif
+%if !WHITE_SPACE(tlcCleanupRuntimeResourcesFcnOfS3B15)
+/* CleanupRuntimeResources for ToAsyncQueueBlock generated from: '<Root>/To Workspace2' */
+%<tlcCleanupRuntimeResourcesFcnOfS3B15>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Terminate", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Terminate"))
+%<SLibCG_AccessArg(0, 9, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 9, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Terminate", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Terminate"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 9, 0)>
+%endif
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void CPS_Eva_Term(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 9, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("CPS_Eva_Term", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%if SLibCG_ArgAccessed(0, 9, 1)
+%<comma>B_CPS_Eva_c_T *localB\
+%assign comma = ", "
+%endif
+%if SLibCG_ArgAccessed(0, 9, 2)
+%<comma>DW_CPS_Eva_f_T *localDW\
+%assign comma = ", "
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 9, fcnProtoType)>
+%endfunction

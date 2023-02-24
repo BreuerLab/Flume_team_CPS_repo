@@ -1,0 +1,37 @@
+%implements s4_b0_q0k1c_0_Enable "C"
+
+%function Enable(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* Enable for DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
+localDW->DiscreteTimeIntegrator1_SYSTEM_ENABLE = 1U;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Enable", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Enable"))
+%<SLibCG_AccessArg(0, 7, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 7, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Enable", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Enable"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 7, 0)>
+%endif
+%endfunction
+%function EnableFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void CPS_Eva_Enable(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 7, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("CPS_Eva_Enable", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>DW_CPS_Eva_f_T *localDW\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 7, fcnProtoType)>
+%endfunction

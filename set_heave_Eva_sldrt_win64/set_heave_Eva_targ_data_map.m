@@ -28,36 +28,32 @@
         ;%
         ;% Auto data (set_heave_Eva_P)
         ;%
-            section.nData     = 7;
-            section.data(7)  = dumData; %prealloc
+            section.nData     = 6;
+            section.data(6)  = dumData; %prealloc
 
-                    ;% set_heave_Eva_P.duration
+                    ;% set_heave_Eva_P.start_position_cm
                     section.data(1).logicalSrcIdx = 0;
                     section.data(1).dtTransOffset = 0;
 
-                    ;% set_heave_Eva_P.start_position_cm
-                    section.data(2).logicalSrcIdx = 1;
+                    ;% set_heave_Eva_P.EncoderInput_InputFilter
+                    section.data(2).logicalSrcIdx = 3;
                     section.data(2).dtTransOffset = 1;
 
-                    ;% set_heave_Eva_P.EncoderInput_InputFilter
+                    ;% set_heave_Eva_P.AnalogOutput_MaxMissedTicks
                     section.data(3).logicalSrcIdx = 4;
                     section.data(3).dtTransOffset = 2;
 
-                    ;% set_heave_Eva_P.AnalogOutput_MaxMissedTicks
+                    ;% set_heave_Eva_P.EncoderInput_MaxMissedTicks
                     section.data(4).logicalSrcIdx = 5;
                     section.data(4).dtTransOffset = 3;
 
-                    ;% set_heave_Eva_P.EncoderInput_MaxMissedTicks
+                    ;% set_heave_Eva_P.AnalogOutput_YieldWhenWaiting
                     section.data(5).logicalSrcIdx = 6;
                     section.data(5).dtTransOffset = 4;
 
-                    ;% set_heave_Eva_P.AnalogOutput_YieldWhenWaiting
+                    ;% set_heave_Eva_P.EncoderInput_YieldWhenWaiting
                     section.data(6).logicalSrcIdx = 7;
                     section.data(6).dtTransOffset = 5;
-
-                    ;% set_heave_Eva_P.EncoderInput_YieldWhenWaiting
-                    section.data(7).logicalSrcIdx = 8;
-                    section.data(7).dtTransOffset = 6;
 
             nTotData = nTotData + section.nData;
             paramMap.sections(1) = section;
@@ -67,67 +63,71 @@
             section.data(4)  = dumData; %prealloc
 
                     ;% set_heave_Eva_P.AnalogOutput_Channels
-                    section.data(1).logicalSrcIdx = 9;
+                    section.data(1).logicalSrcIdx = 8;
                     section.data(1).dtTransOffset = 0;
 
                     ;% set_heave_Eva_P.EncoderInput_Channels
-                    section.data(2).logicalSrcIdx = 10;
+                    section.data(2).logicalSrcIdx = 9;
                     section.data(2).dtTransOffset = 1;
 
                     ;% set_heave_Eva_P.AnalogOutput_RangeMode
-                    section.data(3).logicalSrcIdx = 11;
+                    section.data(3).logicalSrcIdx = 10;
                     section.data(3).dtTransOffset = 2;
 
                     ;% set_heave_Eva_P.AnalogOutput_VoltRange
-                    section.data(4).logicalSrcIdx = 12;
+                    section.data(4).logicalSrcIdx = 11;
                     section.data(4).dtTransOffset = 3;
 
             nTotData = nTotData + section.nData;
             paramMap.sections(2) = section;
             clear section
 
-            section.nData     = 10;
-            section.data(10)  = dumData; %prealloc
+            section.nData     = 11;
+            section.data(11)  = dumData; %prealloc
 
                     ;% set_heave_Eva_P.SineWave1_Amp
-                    section.data(1).logicalSrcIdx = 13;
+                    section.data(1).logicalSrcIdx = 12;
                     section.data(1).dtTransOffset = 0;
 
                     ;% set_heave_Eva_P.SineWave1_Bias
-                    section.data(2).logicalSrcIdx = 14;
+                    section.data(2).logicalSrcIdx = 13;
                     section.data(2).dtTransOffset = 1;
 
-                    ;% set_heave_Eva_P.SineWave1_Hsin
-                    section.data(3).logicalSrcIdx = 15;
+                    ;% set_heave_Eva_P.SineWave1_Freq
+                    section.data(3).logicalSrcIdx = 14;
                     section.data(3).dtTransOffset = 2;
 
-                    ;% set_heave_Eva_P.SineWave1_HCos
-                    section.data(4).logicalSrcIdx = 16;
+                    ;% set_heave_Eva_P.SineWave1_Hsin
+                    section.data(4).logicalSrcIdx = 15;
                     section.data(4).dtTransOffset = 3;
 
-                    ;% set_heave_Eva_P.SineWave1_PSin
-                    section.data(5).logicalSrcIdx = 17;
+                    ;% set_heave_Eva_P.SineWave1_HCos
+                    section.data(5).logicalSrcIdx = 16;
                     section.data(5).dtTransOffset = 4;
 
-                    ;% set_heave_Eva_P.SineWave1_PCos
-                    section.data(6).logicalSrcIdx = 18;
+                    ;% set_heave_Eva_P.SineWave1_PSin
+                    section.data(6).logicalSrcIdx = 17;
                     section.data(6).dtTransOffset = 5;
 
-                    ;% set_heave_Eva_P.Constant1_Value
-                    section.data(7).logicalSrcIdx = 19;
+                    ;% set_heave_Eva_P.SineWave1_PCos
+                    section.data(7).logicalSrcIdx = 18;
                     section.data(7).dtTransOffset = 6;
 
-                    ;% set_heave_Eva_P.Gain1_Gain
-                    section.data(8).logicalSrcIdx = 20;
+                    ;% set_heave_Eva_P.Constant1_Value
+                    section.data(8).logicalSrcIdx = 19;
                     section.data(8).dtTransOffset = 7;
 
-                    ;% set_heave_Eva_P.Gain8_Gain
-                    section.data(9).logicalSrcIdx = 21;
+                    ;% set_heave_Eva_P.Gain1_Gain
+                    section.data(9).logicalSrcIdx = 20;
                     section.data(9).dtTransOffset = 8;
 
-                    ;% set_heave_Eva_P.Gain7_Gain
-                    section.data(10).logicalSrcIdx = 22;
+                    ;% set_heave_Eva_P.Gain8_Gain
+                    section.data(10).logicalSrcIdx = 21;
                     section.data(10).dtTransOffset = 9;
+
+                    ;% set_heave_Eva_P.Gain7_Gain
+                    section.data(11).logicalSrcIdx = 22;
+                    section.data(11).dtTransOffset = 10;
 
             nTotData = nTotData + section.nData;
             paramMap.sections(3) = section;
@@ -313,8 +313,8 @@
     ;%
 
 
-    targMap.checksum0 = 3525131322;
-    targMap.checksum1 = 774694463;
-    targMap.checksum2 = 72691472;
-    targMap.checksum3 = 638309872;
+    targMap.checksum0 = 3744375731;
+    targMap.checksum1 = 3878004775;
+    targMap.checksum2 = 2054235025;
+    targMap.checksum3 = 4221087644;
 

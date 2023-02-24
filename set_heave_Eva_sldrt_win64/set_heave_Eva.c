@@ -7,9 +7,9 @@
  *
  * Code generation for model "set_heave_Eva".
  *
- * Model version              : 1.1
+ * Model version              : 1.4
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Feb  2 16:57:23 2023
+ * C source code generated on : Fri Feb 24 13:18:39 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -66,7 +66,7 @@ void set_heave_Eva_output(void)
 
   /* Sin: '<Root>/Sine Wave1' */
   if (set_heave_Eva_DW.systemEnable != 0) {
-    rtb_EncoderInput = 1.0 / (2.0 * set_heave_Eva_P.duration) * 6.28 *
+    rtb_EncoderInput = set_heave_Eva_P.SineWave1_Freq *
       set_heave_Eva_M->Timing.t[0];
     set_heave_Eva_DW.lastSin = sin(rtb_EncoderInput);
     set_heave_Eva_DW.lastCos = cos(rtb_EncoderInput);
@@ -285,10 +285,10 @@ RT_MODEL_set_heave_Eva_T *set_heave_Eva(void)
   set_heave_Eva_M->Timing.stepSize0 = 0.001;
 
   /* External mode info */
-  set_heave_Eva_M->Sizes.checksums[0] = (3525131322U);
-  set_heave_Eva_M->Sizes.checksums[1] = (774694463U);
-  set_heave_Eva_M->Sizes.checksums[2] = (72691472U);
-  set_heave_Eva_M->Sizes.checksums[3] = (638309872U);
+  set_heave_Eva_M->Sizes.checksums[0] = (3744375731U);
+  set_heave_Eva_M->Sizes.checksums[1] = (3878004775U);
+  set_heave_Eva_M->Sizes.checksums[2] = (2054235025U);
+  set_heave_Eva_M->Sizes.checksums[3] = (4221087644U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;

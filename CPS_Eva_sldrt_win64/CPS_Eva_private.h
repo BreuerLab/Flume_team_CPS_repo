@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.17
+ * Model version              : 1.25
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Feb 23 14:37:36 2023
+ * C source code generated on : Fri Feb 24 13:19:30 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -24,15 +24,6 @@
 #include "multiword_types.h"
 #include "zero_crossing_types.h"
 #include "CPS_Eva_types.h"
-
-/* Used by FromWorkspace Block: '<S1>/FromWs' */
-#ifndef rtInterpolate
-# define rtInterpolate(v1,v2,f1,f2)    (((v1)==(v2))?((double)(v1)): (((f1)*((double)(v1)))+((f2)*((double)(v2)))))
-#endif
-
-#ifndef rtRound
-# define rtRound(v)                    ( ((v) >= 0) ? floor((v) + 0.5) : ceil((v) - 0.5) )
-#endif
 
 /* private model entry point functions */
 extern void CPS_Eva_derivatives(void);

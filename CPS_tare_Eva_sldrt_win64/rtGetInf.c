@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_tare_Eva".
  *
- * Model version              : 1.4
+ * Model version              : 1.7
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Feb 23 14:12:31 2023
+ * C source code generated on : Fri Feb 24 13:07:44 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

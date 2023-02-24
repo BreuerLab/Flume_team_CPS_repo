@@ -7,9 +7,9 @@
  *
  * Code generation for model "set_heave_Eva".
  *
- * Model version              : 1.1
+ * Model version              : 1.4
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Feb  2 16:57:23 2023
+ * C source code generated on : Fri Feb 24 13:18:39 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -94,11 +94,11 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&set_heave_Eva_P.duration), 0, 0, 7 },
+  { (char_T *)(&set_heave_Eva_P.start_position_cm), 0, 0, 6 },
 
   { (char_T *)(&set_heave_Eva_P.AnalogOutput_Channels), 6, 0, 4 },
 
-  { (char_T *)(&set_heave_Eva_P.SineWave1_Amp), 0, 0, 10 }
+  { (char_T *)(&set_heave_Eva_P.SineWave1_Amp), 0, 0, 11 }
 };
 
 /* data type transition table for Parameters structure */

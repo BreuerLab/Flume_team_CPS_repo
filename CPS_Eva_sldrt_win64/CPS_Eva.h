@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.17
+ * Model version              : 1.25
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Feb 23 14:37:36 2023
+ * C source code generated on : Fri Feb 24 13:19:30 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -31,7 +31,6 @@
 #endif                                 /* CPS_Eva_COMMON_INCLUDES_ */
 
 #include "CPS_Eva_types.h"
-#include <math.h>
 #include "rtGetInf.h"
 #include <stddef.h>
 #include <string.h>
@@ -868,21 +867,22 @@
 /* Block signals (default storage) */
 typedef struct {
   real_T UnitDelay;                    /* '<Root>/Unit Delay' */
-  real_T AnalogFilterDesign;           /* '<Root>/Analog Filter Design' */
+  real_T Fy_plus_ma_filtered;          /* '<Root>/Analog Filter Design' */
   real_T Saturation;                   /* '<Root>/Saturation' */
   real_T DiscreteTimeIntegrator;       /* '<Root>/Discrete-Time Integrator' */
   real_T Saturation1;                  /* '<Root>/Saturation1' */
   real_T DiscreteTimeIntegrator1;      /* '<Root>/Discrete-Time Integrator1' */
-  real_T Saturation2;                  /* '<Root>/Saturation2' */
-  real_T Gain6;                        /* '<Root>/Gain6' */
   real_T Gain[6];                      /* '<Root>/Gain' */
-  real_T Gain11;                       /* '<Root>/Gain11' */
-  real_T Gain5;                        /* '<Root>/Gain5' */
-  real_T Gain2;                        /* '<Root>/Gain2' */
-  real_T TmpSignalConversionAtToWorkspace1Inport1[5];
-  real_T Sum1;                         /* '<Root>/Sum1' */
-  real_T Gain4[4];                     /* '<Root>/Gain4' */
+  real_T Fy;                           /* '<Root>/Gain5' */
+  real_T ma;                           /* '<Root>/Gain2' */
+  real_T Constant;                     /* '<Root>/Constant' */
+  real_T CommandedPosition;            /* '<Root>/Gain7' */
   real_T MeasuredPosition;             /* '<Root>/Bias3' */
+  real_T torque_z;                     /* '<Root>/Gain11' */
+  real_T TmpSignalConversionAtToWorkspace1Inport1[5];
+  real_T Gain4[4];                     /* '<Root>/Gain4' */
+  real_T Add;                          /* '<Root>/Add' */
+  real_T Sum1;                         /* '<Root>/Sum1' */
 } B_CPS_Eva_T;
 
 /* Block states (default storage) for system '<Root>' */
@@ -890,21 +890,18 @@ typedef struct {
   real_T UnitDelay_DSTATE;             /* '<Root>/Unit Delay' */
   real_T DiscreteTimeIntegrator_DSTATE;/* '<Root>/Discrete-Time Integrator' */
   real_T DiscreteTimeIntegrator1_DSTATE;/* '<Root>/Discrete-Time Integrator1' */
-  struct {
-    void *TimePtr;
-    void *DataPtr;
-    void *RSimInfoPtr;
-  } FromWs_PWORK;                      /* '<S1>/FromWs' */
-
   void *AnalogOutput_PWORK;            /* '<Root>/Analog Output' */
   void *AnalogOutput1_PWORK;           /* '<Root>/Analog Output1' */
   void *AnalogInput_PWORK;             /* '<Root>/Analog Input' */
   void *AnalogInput2_PWORK;            /* '<Root>/Analog Input2' */
-  void *AnalogInput1_PWORK;            /* '<Root>/Analog Input1' */
   void *EncoderInput_PWORK;            /* '<Root>/Encoder Input' */
   struct {
     void *LoggedData;
-  } Scope3_PWORK;                      /* '<Root>/Scope3' */
+  } Scope_PWORK;                       /* '<Root>/Scope' */
+
+  struct {
+    void *LoggedData;
+  } Scope1_PWORK;                      /* '<Root>/Scope1' */
 
   struct {
     void *LoggedData;
@@ -916,15 +913,11 @@ typedef struct {
 
   struct {
     void *LoggedData;
-  } ToWorkspace3_PWORK;                /* '<Root>/To Workspace3' */
-
-  struct {
-    void *LoggedData;
   } ToWorkspace2_PWORK;                /* '<Root>/To Workspace2' */
 
   struct {
-    int_T PrevIndex;
-  } FromWs_IWORK;                      /* '<S1>/FromWs' */
+    void *LoggedData;
+  } ToWorkspace3_PWORK;                /* '<Root>/To Workspace3' */
 
   uint8_T DiscreteTimeIntegrator1_SYSTEM_ENABLE;/* '<Root>/Discrete-Time Integrator1' */
 } DW_CPS_Eva_T;
@@ -985,9 +978,6 @@ struct P_CPS_Eva_T_ {
                                         *   '<Root>/Constant2'
                                         *   '<Root>/Unit Delay'
                                         */
-  real_T mass_of_cylinder;             /* Variable: mass_of_cylinder
-                                        * Referenced by: '<Root>/Gain2'
-                                        */
   real_T start_position_cm;            /* Variable: start_position_cm
                                         * Referenced by:
                                         *   '<Root>/Bias3'
@@ -1013,10 +1003,6 @@ struct P_CPS_Eva_T_ {
                                   /* Mask Parameter: AnalogInput2_MaxMissedTicks
                                    * Referenced by: '<Root>/Analog Input2'
                                    */
-  real_T AnalogInput1_MaxMissedTicks;
-                                  /* Mask Parameter: AnalogInput1_MaxMissedTicks
-                                   * Referenced by: '<Root>/Analog Input1'
-                                   */
   real_T EncoderInput_MaxMissedTicks;
                                   /* Mask Parameter: EncoderInput_MaxMissedTicks
                                    * Referenced by: '<Root>/Encoder Input'
@@ -1037,10 +1023,6 @@ struct P_CPS_Eva_T_ {
                                 /* Mask Parameter: AnalogInput2_YieldWhenWaiting
                                  * Referenced by: '<Root>/Analog Input2'
                                  */
-  real_T AnalogInput1_YieldWhenWaiting;
-                                /* Mask Parameter: AnalogInput1_YieldWhenWaiting
-                                 * Referenced by: '<Root>/Analog Input1'
-                                 */
   real_T EncoderInput_YieldWhenWaiting;
                                 /* Mask Parameter: EncoderInput_YieldWhenWaiting
                                  * Referenced by: '<Root>/Encoder Input'
@@ -1051,14 +1033,11 @@ struct P_CPS_Eva_T_ {
   int32_T AnalogOutput1_Channels;      /* Mask Parameter: AnalogOutput1_Channels
                                         * Referenced by: '<Root>/Analog Output1'
                                         */
-  int32_T AnalogInput_Channels[6];     /* Mask Parameter: AnalogInput_Channels
+  int32_T AnalogInput_Channels[10];    /* Mask Parameter: AnalogInput_Channels
                                         * Referenced by: '<Root>/Analog Input'
                                         */
   int32_T AnalogInput2_Channels;       /* Mask Parameter: AnalogInput2_Channels
                                         * Referenced by: '<Root>/Analog Input2'
-                                        */
-  int32_T AnalogInput1_Channels[4];    /* Mask Parameter: AnalogInput1_Channels
-                                        * Referenced by: '<Root>/Analog Input1'
                                         */
   int32_T EncoderInput_Channels;       /* Mask Parameter: EncoderInput_Channels
                                         * Referenced by: '<Root>/Encoder Input'
@@ -1075,9 +1054,6 @@ struct P_CPS_Eva_T_ {
   int32_T AnalogInput2_RangeMode;      /* Mask Parameter: AnalogInput2_RangeMode
                                         * Referenced by: '<Root>/Analog Input2'
                                         */
-  int32_T AnalogInput1_RangeMode;      /* Mask Parameter: AnalogInput1_RangeMode
-                                        * Referenced by: '<Root>/Analog Input1'
-                                        */
   int32_T AnalogOutput_VoltRange;      /* Mask Parameter: AnalogOutput_VoltRange
                                         * Referenced by: '<Root>/Analog Output'
                                         */
@@ -1089,9 +1065,6 @@ struct P_CPS_Eva_T_ {
                                         */
   int32_T AnalogInput2_VoltRange;      /* Mask Parameter: AnalogInput2_VoltRange
                                         * Referenced by: '<Root>/Analog Input2'
-                                        */
-  int32_T AnalogInput1_VoltRange;      /* Mask Parameter: AnalogInput1_VoltRange
-                                        * Referenced by: '<Root>/Analog Input1'
                                         */
   real_T Gain9_Gain;                   /* Expression: 1/180*pi
                                         * Referenced by: '<Root>/Gain9'
@@ -1138,18 +1111,6 @@ struct P_CPS_Eva_T_ {
   real_T Saturation2_LowerSat;         /* Expression: -0.13
                                         * Referenced by: '<Root>/Saturation2'
                                         */
-  real_T SineWave_Amp;                 /* Expression: 0.05
-                                        * Referenced by: '<Root>/Sine Wave'
-                                        */
-  real_T SineWave_Bias;                /* Expression: 0
-                                        * Referenced by: '<Root>/Sine Wave'
-                                        */
-  real_T SineWave_Freq;                /* Expression: 2*3.14*1
-                                        * Referenced by: '<Root>/Sine Wave'
-                                        */
-  real_T SineWave_Phase;               /* Expression: 0
-                                        * Referenced by: '<Root>/Sine Wave'
-                                        */
   real_T Constant3_Value;              /* Expression: 0
                                         * Referenced by: '<Root>/Constant3'
                                         */
@@ -1165,26 +1126,35 @@ struct P_CPS_Eva_T_ {
   real_T Bias_Bias[6];              /* Expression: -tare.signals.values(end,1:6)
                                      * Referenced by: '<Root>/Bias'
                                      */
-  real_T Gain11_Gain;                  /* Expression: -1
-                                        * Referenced by: '<Root>/Gain11'
-                                        */
   real_T Gain5_Gain;                   /* Expression: -1
                                         * Referenced by: '<Root>/Gain5'
                                         */
   real_T Bias1_Bias;                  /* Expression: -tare.signals.values(end,7)
                                        * Referenced by: '<Root>/Bias1'
                                        */
-  real_T Gain1_Gain;                   /* Expression: -9.81
+  real_T Gain1_Gain;                   /* Expression: 9.81
                                         * Referenced by: '<Root>/Gain1'
+                                        */
+  real_T Gain2_Gain;                   /* Expression: 0.6+0
+                                        * Referenced by: '<Root>/Gain2'
+                                        */
+  real_T Constant_Value;               /* Expression: 0
+                                        * Referenced by: '<Root>/Constant'
+                                        */
+  real_T Gain7_Gain;                   /* Expression: 100
+                                        * Referenced by: '<Root>/Gain7'
+                                        */
+  real_T Gain8_Gain;                   /* Expression: 1*(1/(4*2000))*2.54
+                                        * Referenced by: '<Root>/Gain8'
+                                        */
+  real_T Gain11_Gain;                  /* Expression: -1
+                                        * Referenced by: '<Root>/Gain11'
                                         */
   real_T Bias2_Bias;                   /* Expression: 2.5
                                         * Referenced by: '<Root>/Bias2'
                                         */
   real_T Gain4_Gain;                   /* Expression: 0.4
                                         * Referenced by: '<Root>/Gain4'
-                                        */
-  real_T Gain8_Gain;                   /* Expression: 1*(1/(4*2000))*2.54
-                                        * Referenced by: '<Root>/Gain8'
                                         */
   uint32_T AnalogFilterDesign_A_ir[7];
                                   /* Computed Parameter: AnalogFilterDesign_A_ir
@@ -1379,6 +1349,5 @@ extern RT_MODEL_CPS_Eva_T *const CPS_Eva_M;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'CPS_Eva'
- * '<S1>'   : 'CPS_Eva/Custom Trajectory'
  */
 #endif                                 /* RTW_HEADER_CPS_Eva_h_ */

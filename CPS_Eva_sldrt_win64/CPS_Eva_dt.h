@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.17
+ * Model version              : 1.25
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Feb 23 14:37:36 2023
+ * C source code generated on : Fri Feb 24 13:19:30 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -76,31 +76,29 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&CPS_Eva_B.UnitDelay), 0, 0, 28 }
+  { (char_T *)(&CPS_Eva_B.UnitDelay), 0, 0, 29 }
   ,
 
   { (char_T *)(&CPS_Eva_DW.UnitDelay_DSTATE), 0, 0, 3 },
 
-  { (char_T *)(&CPS_Eva_DW.FromWs_PWORK.TimePtr), 11, 0, 12 },
-
-  { (char_T *)(&CPS_Eva_DW.FromWs_IWORK.PrevIndex), 10, 0, 1 },
+  { (char_T *)(&CPS_Eva_DW.AnalogOutput_PWORK), 11, 0, 11 },
 
   { (char_T *)(&CPS_Eva_DW.DiscreteTimeIntegrator1_SYSTEM_ENABLE), 3, 0, 1 }
 };
 
 /* data type transition table for block I/O structure */
 static DataTypeTransitionTable rtBTransTable = {
-  5U,
+  4U,
   rtBTransitions
 };
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&CPS_Eva_P.Gromit_Cal_tranp[0]), 0, 0, 54 },
+  { (char_T *)(&CPS_Eva_P.Gromit_Cal_tranp[0]), 0, 0, 51 },
 
-  { (char_T *)(&CPS_Eva_P.AnalogOutput_Channels), 6, 0, 24 },
+  { (char_T *)(&CPS_Eva_P.AnalogOutput_Channels), 6, 0, 22 },
 
-  { (char_T *)(&CPS_Eva_P.Gain9_Gain), 0, 0, 41 },
+  { (char_T *)(&CPS_Eva_P.Gain9_Gain), 0, 0, 40 },
 
   { (char_T *)(&CPS_Eva_P.AnalogFilterDesign_A_ir[0]), 7, 0, 21 },
 

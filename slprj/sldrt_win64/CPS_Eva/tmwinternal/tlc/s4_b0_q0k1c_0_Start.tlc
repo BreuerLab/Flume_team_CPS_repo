@@ -1,0 +1,96 @@
+%implements s4_b0_q0k1c_0_Start "C"
+
+%function Start(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcSetupRuntimeResourcesFcnOfS3B9 = OpaqueTLCBlockFcn("SetupRuntimeResources", 3, 9, 0, 0, 0)
+%assign tlcSetupRuntimeResourcesFcnOfS3B10 = OpaqueTLCBlockFcn("SetupRuntimeResources", 3, 10, 0, 0, 1)
+%assign tlcSetupRuntimeResourcesFcnOfS3B11 = OpaqueTLCBlockFcn("SetupRuntimeResources", 3, 11, 0, 0, 2)
+%assign tlcSetupRuntimeResourcesFcnOfS3B14 = OpaqueTLCBlockFcn("SetupRuntimeResources", 3, 14, 0, 0, 3)
+%assign tlcSetupRuntimeResourcesFcnOfS3B15 = OpaqueTLCBlockFcn("SetupRuntimeResources", 3, 15, 0, 0, 4)
+%assign tlcStartFcnOfS3B4 = OpaqueTLCBlockFcn("Start", 3, 4, 0, 0, 5)
+%assign tlcStartFcnOfS3B5 = OpaqueTLCBlockFcn("Start", 3, 5, 0, 0, 6)
+%assign tlcStartFcnOfS3B10 = OpaqueTLCBlockFcn("Start", 3, 10, 0, 0, 7)
+%assign tlcStartFcnOfS3B11 = OpaqueTLCBlockFcn("Start", 3, 11, 0, 0, 8)
+%assign tlcStartFcnOfS3B14 = OpaqueTLCBlockFcn("Start", 3, 14, 0, 0, 9)
+%assign tlcStartFcnOfS3B15 = OpaqueTLCBlockFcn("Start", 3, 15, 0, 0, 10)
+%if !WHITE_SPACE(tlcSetupRuntimeResourcesFcnOfS3B9)
+/* SetupRuntimeResources for Scope: '<Root>/Scope3' */
+%<tlcSetupRuntimeResourcesFcnOfS3B9>\
+%endif
+%if !WHITE_SPACE(tlcSetupRuntimeResourcesFcnOfS3B10)
+/* SetupRuntimeResources for ToAsyncQueueBlock generated from: '<Root>/To Workspace' */
+%<tlcSetupRuntimeResourcesFcnOfS3B10>\
+%endif
+%if !WHITE_SPACE(tlcSetupRuntimeResourcesFcnOfS3B11)
+/* SetupRuntimeResources for ToAsyncQueueBlock generated from: '<Root>/To Workspace1' */
+%<tlcSetupRuntimeResourcesFcnOfS3B11>\
+%endif
+%if !WHITE_SPACE(tlcSetupRuntimeResourcesFcnOfS3B14)
+/* SetupRuntimeResources for ToAsyncQueueBlock generated from: '<Root>/To Workspace3' */
+%<tlcSetupRuntimeResourcesFcnOfS3B14>\
+%endif
+%if !WHITE_SPACE(tlcSetupRuntimeResourcesFcnOfS3B15)
+/* SetupRuntimeResources for ToAsyncQueueBlock generated from: '<Root>/To Workspace2' */
+%<tlcSetupRuntimeResourcesFcnOfS3B15>\
+%endif
+%if !WHITE_SPACE(tlcStartFcnOfS3B4)
+/* Start for S-Function (sldrtao): '<Root>/Analog Output' */
+%<tlcStartFcnOfS3B4>\
+%endif
+%if !WHITE_SPACE(tlcStartFcnOfS3B5)
+/* Start for S-Function (sldrtao): '<Root>/Analog Output1' */
+%<tlcStartFcnOfS3B5>\
+%endif
+%if !WHITE_SPACE(tlcStartFcnOfS3B10)
+/* Start for ToAsyncQueueBlock generated from: '<Root>/To Workspace' */
+%<tlcStartFcnOfS3B10>\
+%endif
+%if !WHITE_SPACE(tlcStartFcnOfS3B11)
+/* Start for ToAsyncQueueBlock generated from: '<Root>/To Workspace1' */
+%<tlcStartFcnOfS3B11>\
+%endif
+%if !WHITE_SPACE(tlcStartFcnOfS3B14)
+/* Start for ToAsyncQueueBlock generated from: '<Root>/To Workspace3' */
+%<tlcStartFcnOfS3B14>\
+%endif
+%if !WHITE_SPACE(tlcStartFcnOfS3B15)
+/* Start for ToAsyncQueueBlock generated from: '<Root>/To Workspace2' */
+%<tlcStartFcnOfS3B15>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Start", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Start"))
+%<SLibCG_AccessArg(0, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Start", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Start"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 0, 0)>
+%endif
+%endfunction
+%function StartFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void CPS_Eva_Start(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("CPS_Eva_Start", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%if SLibCG_ArgAccessed(0, 0, 1)
+%<comma>B_CPS_Eva_c_T *localB\
+%assign comma = ", "
+%endif
+%if SLibCG_ArgAccessed(0, 0, 2)
+%<comma>DW_CPS_Eva_f_T *localDW\
+%assign comma = ", "
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%endfunction

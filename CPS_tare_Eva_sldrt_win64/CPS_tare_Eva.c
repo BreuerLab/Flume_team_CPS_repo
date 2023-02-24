@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_tare_Eva".
  *
- * Model version              : 1.4
+ * Model version              : 1.7
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Feb 23 14:12:31 2023
+ * C source code generated on : Fri Feb 24 13:07:44 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -26,7 +26,7 @@
 
 /* options for Simulink Desktop Real-Time board 0 */
 static double SLDRTBoardOptions0[] = {
-  0.0,
+  1.0,
   0.0,
   0.0,
   0.0,
@@ -261,10 +261,10 @@ RT_MODEL_CPS_tare_Eva_T *CPS_tare_Eva(void)
   CPS_tare_Eva_M->Timing.stepSize0 = 0.001;
 
   /* External mode info */
-  CPS_tare_Eva_M->Sizes.checksums[0] = (1142169477U);
-  CPS_tare_Eva_M->Sizes.checksums[1] = (307325929U);
-  CPS_tare_Eva_M->Sizes.checksums[2] = (3111788138U);
-  CPS_tare_Eva_M->Sizes.checksums[3] = (2574208948U);
+  CPS_tare_Eva_M->Sizes.checksums[0] = (976782287U);
+  CPS_tare_Eva_M->Sizes.checksums[1] = (2979383981U);
+  CPS_tare_Eva_M->Sizes.checksums[2] = (1478298133U);
+  CPS_tare_Eva_M->Sizes.checksums[3] = (3773855458U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;

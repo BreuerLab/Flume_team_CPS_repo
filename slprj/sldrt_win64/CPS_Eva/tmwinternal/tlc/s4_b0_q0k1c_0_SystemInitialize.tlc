@@ -1,0 +1,55 @@
+%implements s4_b0_q0k1c_0_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcInitializeConditionsFcnOfS3B8 = OpaqueTLCBlockFcn("InitializeConditions", 3, 8, 0, 1, 0)
+%<SLibWriteMachineInitialize()>
+/* InitializeConditions for UnitDelay: '<Root>/Unit Delay' */
+localDW->UnitDelay_DSTATE = rtP_start_position_cm * rtP_k / 100.0;
+/* InitializeConditions for StateSpace: '<Root>/Analog Filter Design' */
+localX->AnalogFilterDesign_CSTATE[0] = CPS_Eva_P.AnalogFilterDesign_InitialCondition;
+localX->AnalogFilterDesign_CSTATE[1] = CPS_Eva_P.AnalogFilterDesign_InitialCondition;
+localX->AnalogFilterDesign_CSTATE[2] = CPS_Eva_P.AnalogFilterDesign_InitialCondition;
+localX->AnalogFilterDesign_CSTATE[3] = CPS_Eva_P.AnalogFilterDesign_InitialCondition;
+/* InitializeConditions for DiscreteIntegrator: '<Root>/Discrete-Time Integrator' */
+localDW->DiscreteTimeIntegrator_DSTATE = CPS_Eva_P.DiscreteTimeIntegrator_IC;
+/* InitializeConditions for DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
+localDW->DiscreteTimeIntegrator1_DSTATE = rtP_start_position_cm / 100.0;
+%if !WHITE_SPACE(tlcInitializeConditionsFcnOfS3B8)
+/* InitializeConditions for S-Function (sldrtei): '<Root>/Encoder Input' */
+%<tlcInitializeConditionsFcnOfS3B8>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("SystemInitialize", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "SystemInitialize"))
+%<SLibCG_AccessArg(0, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "SystemInitialize", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "SystemInitialize"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void CPS_Eva_Init(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("CPS_Eva_Init", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>DW_CPS_Eva_f_T *localDW\
+%assign comma = ", "
+%<comma>X_CPS_Eva_n_T *localX\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 1, fcnProtoType)>
+%endfunction

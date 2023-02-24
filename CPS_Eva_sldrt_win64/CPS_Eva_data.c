@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.17
+ * Model version              : 1.25
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Feb 23 14:37:36 2023
+ * C source code generated on : Fri Feb 24 13:19:30 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -48,18 +48,13 @@ P_CPS_Eva_T CPS_Eva_P = {
    */
   394.78417604357435,
 
-  /* Variable: mass_of_cylinder
-   * Referenced by: '<Root>/Gain2'
-   */
-  0.306,
-
   /* Variable: start_position_cm
    * Referenced by:
    *   '<Root>/Bias3'
    *   '<Root>/Discrete-Time Integrator1'
    *   '<Root>/Unit Delay'
    */
-  0.0,
+  4.9403,
 
   /* Mask Parameter: EncoderInput_InputFilter
    * Referenced by: '<Root>/Encoder Input'
@@ -83,11 +78,6 @@ P_CPS_Eva_T CPS_Eva_P = {
 
   /* Mask Parameter: AnalogInput2_MaxMissedTicks
    * Referenced by: '<Root>/Analog Input2'
-   */
-  10.0,
-
-  /* Mask Parameter: AnalogInput1_MaxMissedTicks
-   * Referenced by: '<Root>/Analog Input1'
    */
   10.0,
 
@@ -116,11 +106,6 @@ P_CPS_Eva_T CPS_Eva_P = {
    */
   0.0,
 
-  /* Mask Parameter: AnalogInput1_YieldWhenWaiting
-   * Referenced by: '<Root>/Analog Input1'
-   */
-  0.0,
-
   /* Mask Parameter: EncoderInput_YieldWhenWaiting
    * Referenced by: '<Root>/Encoder Input'
    */
@@ -139,17 +124,12 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Mask Parameter: AnalogInput_Channels
    * Referenced by: '<Root>/Analog Input'
    */
-  { 0, 1, 2, 3, 4, 5 },
+  { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 },
 
   /* Mask Parameter: AnalogInput2_Channels
    * Referenced by: '<Root>/Analog Input2'
    */
   24,
-
-  /* Mask Parameter: AnalogInput1_Channels
-   * Referenced by: '<Root>/Analog Input1'
-   */
-  { 6, 7, 8, 9 },
 
   /* Mask Parameter: EncoderInput_Channels
    * Referenced by: '<Root>/Encoder Input'
@@ -176,11 +156,6 @@ P_CPS_Eva_T CPS_Eva_P = {
    */
   0,
 
-  /* Mask Parameter: AnalogInput1_RangeMode
-   * Referenced by: '<Root>/Analog Input1'
-   */
-  0,
-
   /* Mask Parameter: AnalogOutput_VoltRange
    * Referenced by: '<Root>/Analog Output'
    */
@@ -198,11 +173,6 @@ P_CPS_Eva_T CPS_Eva_P = {
 
   /* Mask Parameter: AnalogInput2_VoltRange
    * Referenced by: '<Root>/Analog Input2'
-   */
-  0,
-
-  /* Mask Parameter: AnalogInput1_VoltRange
-   * Referenced by: '<Root>/Analog Input1'
    */
   0,
 
@@ -278,26 +248,6 @@ P_CPS_Eva_T CPS_Eva_P = {
    */
   -0.13,
 
-  /* Expression: 0.05
-   * Referenced by: '<Root>/Sine Wave'
-   */
-  0.05,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/Sine Wave'
-   */
-  0.0,
-
-  /* Expression: 2*3.14*1
-   * Referenced by: '<Root>/Sine Wave'
-   */
-  6.28,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/Sine Wave'
-   */
-  0.0,
-
   /* Expression: 0
    * Referenced by: '<Root>/Constant3'
    */
@@ -321,13 +271,8 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Expression: -tare.signals.values(end,1:6)
    * Referenced by: '<Root>/Bias'
    */
-  { -0.13440581576921984, -0.49988255529297776, 0.23643479852789648,
-    -1.0090033593452041, -0.40437552831277918, 0.085773947807643178 },
-
-  /* Expression: -1
-   * Referenced by: '<Root>/Gain11'
-   */
-  -1.0,
+  { 0.020439756259457785, -0.36671943576591964, 0.38855917229520176,
+    -0.87944465878051792, -0.2618065798906129, 0.23010026374685077 },
 
   /* Expression: -1
    * Referenced by: '<Root>/Gain5'
@@ -337,12 +282,37 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Expression: -tare.signals.values(end,7)
    * Referenced by: '<Root>/Bias1'
    */
-  1.6355703180127437,
+  -1.6741743366808262,
 
-  /* Expression: -9.81
+  /* Expression: 9.81
    * Referenced by: '<Root>/Gain1'
    */
-  -9.81,
+  9.81,
+
+  /* Expression: 0.6+0
+   * Referenced by: '<Root>/Gain2'
+   */
+  0.6,
+
+  /* Expression: 0
+   * Referenced by: '<Root>/Constant'
+   */
+  0.0,
+
+  /* Expression: 100
+   * Referenced by: '<Root>/Gain7'
+   */
+  100.0,
+
+  /* Expression: 1*(1/(4*2000))*2.54
+   * Referenced by: '<Root>/Gain8'
+   */
+  0.0003175,
+
+  /* Expression: -1
+   * Referenced by: '<Root>/Gain11'
+   */
+  -1.0,
 
   /* Expression: 2.5
    * Referenced by: '<Root>/Bias2'
@@ -353,11 +323,6 @@ P_CPS_Eva_T CPS_Eva_P = {
    * Referenced by: '<Root>/Gain4'
    */
   0.4,
-
-  /* Expression: 1*(1/(4*2000))*2.54
-   * Referenced by: '<Root>/Gain8'
-   */
-  0.0003175,
 
   /* Computed Parameter: AnalogFilterDesign_A_ir
    * Referenced by: '<Root>/Analog Filter Design'
@@ -402,7 +367,7 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Computed Parameter: CPSorReference_CurrentSetting
    * Referenced by: '<Root>/CPS or Reference'
    */
-  0U,
+  1U,
 
   /* Computed Parameter: zeropitchorconstant_CurrentSetting
    * Referenced by: '<Root>/zero pitch or constant'

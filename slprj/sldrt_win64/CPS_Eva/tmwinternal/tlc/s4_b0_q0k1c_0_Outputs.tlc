@@ -1,0 +1,228 @@
+%implements s4_b0_q0k1c_0_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T tmp[36];
+real_T rtb_Bias[6];
+real_T rtb_Bias_0[6];
+real_T rtb_AnalogInput1[4];
+real_T rtb_Bias1;
+real_T rtb_EncoderInput;
+int32_T i;
+int32_T i_0;
+uint32_T ri;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS3B4 = OpaqueTLCBlockFcn("Outputs", 3, 4, 0, 3, 0)
+%assign tlcOutputsFcnOfS3B5 = OpaqueTLCBlockFcn("Outputs", 3, 5, 0, 3, 1)
+%assign tlcOutputsFcnOfS3B6 = OpaqueTLCBlockFcn("Outputs", 3, 6, 0, 3, 2)
+%assign tlcOutputsFcnOfS3B7 = OpaqueTLCBlockFcn("Outputs", 3, 7, 0, 3, 3)
+%assign tlcOutputsFcnOfS3B8 = OpaqueTLCBlockFcn("Outputs", 3, 8, 0, 3, 4)
+%assign tlcOutputsFcnOfS3B9 = OpaqueTLCBlockFcn("Outputs", 3, 9, 0, 3, 5)
+%assign tlcOutputsFcnOfS3B10 = OpaqueTLCBlockFcn("Outputs", 3, 10, 0, 3, 6)
+%assign tlcOutputsFcnOfS3B11 = OpaqueTLCBlockFcn("Outputs", 3, 11, 0, 3, 7)
+%assign tlcOutputsFcnOfS3B14 = OpaqueTLCBlockFcn("Outputs", 3, 14, 0, 3, 8)
+%assign tlcOutputsFcnOfS3B15 = OpaqueTLCBlockFcn("Outputs", 3, 15, 0, 3, 9)
+if (%<(SLibCGIRIsSampleHit(1, 3))>) {
+    /* {S!d738}UnitDelay: '<Root>/Unit Delay' */
+    localB->UnitDelay = localDW->UnitDelay_DSTATE;
+}
+/* {S!d740}StateSpace: '<Root>/Analog Filter Design' */
+localB->AnalogFilterDesign = 0.0;
+/* {S!d750}StateSpace: '<Root>/Analog Filter Design' */
+for (ri = CPS_Eva_P.AnalogFilterDesign_C_jc[0U]; ri < CPS_Eva_P.AnalogFilterDesign_C_jc[1U]; ri++) {
+    /* {S!d742}StateSpace: '<Root>/Analog Filter Design' */
+    localB->AnalogFilterDesign += CPS_Eva_P.AnalogFilterDesign_C_pr * localX->AnalogFilterDesign_CSTATE[0U];
+}
+for (ri = CPS_Eva_P.AnalogFilterDesign_C_jc[1U]; ri < CPS_Eva_P.AnalogFilterDesign_C_jc[2U]; ri++) {
+    /* {S!d744}StateSpace: '<Root>/Analog Filter Design' */
+    localB->AnalogFilterDesign += CPS_Eva_P.AnalogFilterDesign_C_pr * localX->AnalogFilterDesign_CSTATE[1U];
+}
+for (ri = CPS_Eva_P.AnalogFilterDesign_C_jc[2U]; ri < CPS_Eva_P.AnalogFilterDesign_C_jc[3U]; ri++) {
+    /* {S!d746}StateSpace: '<Root>/Analog Filter Design' */
+    localB->AnalogFilterDesign += CPS_Eva_P.AnalogFilterDesign_C_pr * localX->AnalogFilterDesign_CSTATE[2U];
+}
+for (ri = CPS_Eva_P.AnalogFilterDesign_C_jc[3U]; ri < CPS_Eva_P.AnalogFilterDesign_C_jc[4U]; ri++) {
+    /* {S!d748}StateSpace: '<Root>/Analog Filter Design' */
+    localB->AnalogFilterDesign += CPS_Eva_P.AnalogFilterDesign_C_pr * localX->AnalogFilterDesign_CSTATE[3U];
+}
+/* {S!d752}Gain: '<Root>/Gain3' incorporates:
+ *  Sum: '<Root>/Sum'
+ */
+localB->Gain3 = 1.0 / rtP_M * (localB->AnalogFilterDesign - localB->UnitDelay);
+if (%<(SLibCGIRIsSampleHit(1, 3))>) {
+    /* {S!d754}DiscreteIntegrator: '<Root>/Discrete-Time Integrator' */
+    localB->DiscreteTimeIntegrator = CPS_Eva_P.DiscreteTimeIntegrator_gainval * localB->Gain3 + localDW->DiscreteTimeIntegrator_DSTATE;
+    /* {S!d760}DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
+    if (localDW->DiscreteTimeIntegrator1_SYSTEM_ENABLE != 0) {
+        /* {S!d756}DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
+        localB->DiscreteTimeIntegrator1 = localDW->DiscreteTimeIntegrator1_DSTATE;
+    } else {
+        /* {S!d758}DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
+        localB->DiscreteTimeIntegrator1 = CPS_Eva_P.DiscreteTimeIntegrator1_gainval * localB->DiscreteTimeIntegrator + localDW->DiscreteTimeIntegrator1_DSTATE;
+    }
+    /* {E!d760}End of DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
+
+    /* {S!d766}ManualSwitch: '<Root>/CPS or Reference' incorporates:
+ *  ManualSwitch: '<Root>/Signal or zero'
+ */
+    if (CPS_Eva_P.CPSorReference_CurrentSetting == 1) {
+        rtb_Bias1 = localB->DiscreteTimeIntegrator1;
+    } else if (CPS_Eva_P.Signalorzero_CurrentSetting == 1) {
+        /* {S!d762}ManualSwitch: '<Root>/Signal or zero' incorporates:
+ *  ManualSwitch: '<Root>/Sine or custom trajectory'
+ */
+        rtb_Bias1 = 0.0;
+    } else {
+        /* {S!d764}ManualSwitch: '<Root>/Signal or zero' incorporates:
+ *  Constant: '<Root>/Constant3'
+ */
+        rtb_Bias1 = CPS_Eva_P.Constant3_Value;
+    }
+    /* {E!d766}End of ManualSwitch: '<Root>/CPS or Reference' */
+
+    /* {S!d768}Gain: '<Root>/Gain6' */
+    rtb_Bias1 *= CPS_Eva_P.Gain6_Gain;
+    /* {S!d770}ManualSwitch: '<Root>/zero pitch or constant' incorporates:
+ *  Constant: '<Root>/Constant3'
+ *  Constant: '<Root>/Constant4'
+ *  Gain: '<Root>/Gain9'
+ */
+    if (CPS_Eva_P.zeropitchorconstant_CurrentSetting == 1) {
+        rtb_EncoderInput = CPS_Eva_P.Constant3_Value;
+    } else {
+        rtb_EncoderInput = CPS_Eva_P.Gain9_Gain * CPS_Eva_P.Constant4_Value;
+    }
+    /* {E!d770}End of ManualSwitch: '<Root>/zero pitch or constant' */
+
+    /* {S!d772}Gain: '<Root>/Gain10' */
+    rtb_EncoderInput *= CPS_Eva_P.Gain10_Gain;
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B4)
+    /* {S!d774}S-Function (sldrtao): '<Root>/Analog Output' */
+%<tlcOutputsFcnOfS3B4>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B5)
+    /* {S!d776}S-Function (sldrtao): '<Root>/Analog Output1' */
+%<tlcOutputsFcnOfS3B5>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B6)
+    /* {S!d778}S-Function (sldrtai): '<Root>/Analog Input' */
+%<tlcOutputsFcnOfS3B6>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B7)
+    /* {S!d780}S-Function (sldrtai): '<Root>/Analog Input1' */
+%<tlcOutputsFcnOfS3B7>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B8)
+    /* {S!d782}S-Function (sldrtei): '<Root>/Encoder Input' */
+%<tlcOutputsFcnOfS3B8>\
+%endif
+    for (i = 0; i <= 4; i += 2) {
+        __m128d tmp_0;
+        /* {S!d784}Bias: '<Root>/Bias' */
+        tmp_0 = _mm_loadu_pd(&rtb_Bias[i]);
+        _mm_storeu_pd(&rtb_Bias_0[i], _mm_add_pd(tmp_0, _mm_loadu_pd(&CPS_Eva_P.Bias_Bias[i])));
+    }
+    for (i = 0; i <= 34; i += 2) {
+        /* {S!d786}Gain: '<Root>/Gain' */
+        _mm_storeu_pd(&tmp[i], _mm_mul_pd(_mm_loadu_pd(&rtP_Gromit_Cal_tranp[i]), _mm_set1_pd(-1.0)));
+    }
+    for (i = 0; i < 6; i++) {
+        /* {S!d788}Gain: '<Root>/Gain' */
+        localB->Gain[i] = 0.0;
+        for (i_0 = 0; i_0 < 6; i_0++) {
+            localB->Gain[i] += tmp[6 * i + i_0] * rtb_Bias_0[i_0];
+        }
+        /* {E!d788}End of Gain: '<Root>/Gain' */
+    }
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B9)
+    /* {S!d790}Scope: '<Root>/Scope3' */
+%<tlcOutputsFcnOfS3B9>\
+%endif
+    /* {S!d792}Gain: '<Root>/Gain11' */
+    localB->Gain11 = CPS_Eva_P.Gain11_Gain * localB->Gain[5];
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B10)
+    /* {S!d794}ToAsyncQueueBlock generated from: '<Root>/To Workspace' */
+%<tlcOutputsFcnOfS3B10>\
+%endif
+    /* {S!d796}Gain: '<Root>/Gain5' */
+    localB->Gain5 = CPS_Eva_P.Gain5_Gain * localB->Gain[1];
+    /* {S!d798}Gain: '<Root>/Gain2' incorporates:
+ *  Bias: '<Root>/Bias1'
+ *  Gain: '<Root>/Gain1'
+ */
+    localB->Gain2 = (CPS_Eva_P.mass_of_cylinder + 0.6) * (CPS_Eva_P.Gain1_Gain * CPS_Eva_P.Bias1_Bias);
+    /* {S!d800}SignalConversion generated from: '<Root>/To Workspace1' */
+    localB->TmpSignalConversionAt_asyncqueue_inserted_for_ToWorkspace1Inport1[0] = localB->Gain5;
+    localB->TmpSignalConversionAt_asyncqueue_inserted_for_ToWorkspace1Inport1[1] = localB->Gain[0];
+    localB->TmpSignalConversionAt_asyncqueue_inserted_for_ToWorkspace1Inport1[2] = localB->Gain2;
+    localB->TmpSignalConversionAt_asyncqueue_inserted_for_ToWorkspace1Inport1[3] = localB->AnalogFilterDesign;
+    localB->TmpSignalConversionAt_asyncqueue_inserted_for_ToWorkspace1Inport1[4] = localB->Gain11;
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B11)
+    /* {S!d802}ToAsyncQueueBlock generated from: '<Root>/To Workspace1' */
+%<tlcOutputsFcnOfS3B11>\
+%endif
+    /* {S!d804}Sum: '<Root>/Sum1' incorporates:
+ *  Constant: '<Root>/Constant1'
+ *  Constant: '<Root>/Constant2'
+ *  Product: '<Root>/Product'
+ *  Product: '<Root>/Product1'
+ */
+    localB->Sum1 = rtP_k * localB->DiscreteTimeIntegrator1 + rtP_c * localB->DiscreteTimeIntegrator;
+    /* {S!d806}Gain: '<Root>/Gain4' incorporates:
+ *  Bias: '<Root>/Bias2'
+ */
+    localB->Gain4[0] = (rtb_AnalogInput1[0] + CPS_Eva_P.Bias2_Bias) * CPS_Eva_P.Gain4_Gain;
+    localB->Gain4[1] = (rtb_AnalogInput1[1] + CPS_Eva_P.Bias2_Bias) * CPS_Eva_P.Gain4_Gain;
+    localB->Gain4[2] = (rtb_AnalogInput1[2] + CPS_Eva_P.Bias2_Bias) * CPS_Eva_P.Gain4_Gain;
+    localB->Gain4[3] = (rtb_AnalogInput1[3] + CPS_Eva_P.Bias2_Bias) * CPS_Eva_P.Gain4_Gain;
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B14)
+    /* {S!d808}ToAsyncQueueBlock generated from: '<Root>/To Workspace3' */
+%<tlcOutputsFcnOfS3B14>\
+%endif
+    /* {S!d810}Bias: '<Root>/Bias3' incorporates:
+ *  Gain: '<Root>/Gain8'
+ */
+    localB->MeasuredPosition = CPS_Eva_P.Gain8_Gain * rtb_EncoderInput + rtP_start_position_cm;
+%if !WHITE_SPACE(tlcOutputsFcnOfS3B15)
+    /* {S!d812}ToAsyncQueueBlock generated from: '<Root>/To Workspace2' */
+%<tlcOutputsFcnOfS3B15>\
+%endif
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(0, 3, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 3, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 3, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void CPS_Eva(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 3, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("CPS_Eva", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>B_CPS_Eva_c_T *localB\
+%assign comma = ", "
+%<comma>DW_CPS_Eva_f_T *localDW\
+%assign comma = ", "
+%<comma>X_CPS_Eva_n_T *localX\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%endfunction
