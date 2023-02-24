@@ -2,14 +2,13 @@
 % run it to pre-set the required parameters, e.g. sampling time;
 sample_rate=1000;
 T=1/sample_rate;
-sim_time = 10; % Total duration of simulink experiment, in seconds
+duration_sim = 10; % Total duration of simulink experiment, in seconds
 start_position_cm = 0; % Initial heave position in meters
-duration = 200;
 
 % System parameters
 M = 10; % simulated mass in kg
 dampratio = 0.1; % damping ratio
-f_nat = 1.0; % natural frequency in Hz
+f_nat = 1.5; % natural frequency in Hz
 
     k = (2*pi*f_nat)^2*M;
     c = 2*dampratio*sqrt(k*M);

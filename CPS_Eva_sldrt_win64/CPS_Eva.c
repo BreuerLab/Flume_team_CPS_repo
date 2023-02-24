@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.25
+ * Model version              : 1.27
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Feb 24 13:19:30 2023
+ * C source code generated on : Fri Feb 24 16:36:40 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -837,10 +837,10 @@ RT_MODEL_CPS_Eva_T *CPS_Eva(void)
   CPS_Eva_M->Timing.stepSize1 = 0.001;
 
   /* External mode info */
-  CPS_Eva_M->Sizes.checksums[0] = (691042126U);
-  CPS_Eva_M->Sizes.checksums[1] = (2822578609U);
-  CPS_Eva_M->Sizes.checksums[2] = (3632200386U);
-  CPS_Eva_M->Sizes.checksums[3] = (1141388180U);
+  CPS_Eva_M->Sizes.checksums[0] = (3237297469U);
+  CPS_Eva_M->Sizes.checksums[1] = (4223103760U);
+  CPS_Eva_M->Sizes.checksums[2] = (2513661975U);
+  CPS_Eva_M->Sizes.checksums[3] = (2261803999U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
