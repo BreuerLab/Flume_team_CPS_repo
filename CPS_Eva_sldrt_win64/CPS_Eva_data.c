@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.27
+ * Model version              : 1.32
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Feb 24 16:36:40 2023
+ * C source code generated on : Mon Feb 27 12:57:37 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -22,19 +22,23 @@
 
 /* Block parameters (default storage) */
 P_CPS_Eva_T CPS_Eva_P = {
-  /* Variable: Gromit_Cal_tranp
-   * Referenced by: '<Root>/Gain'
-   */
-  { -0.14949, 0.21629, -0.44045, -69.17754, 5.14209, 66.58631, 3.76511, 79.12451,
-    -0.93703, -39.93894, -3.18235, -38.82968, 119.69008, 0.20742, 121.4034,
-    1.86132, 119.48767, 1.72429, 0.07852, 1.83351, -4.16898, -0.97465, 4.0923,
-    -0.84436, 4.74524, -0.0018, -2.34562, 1.56487, -2.56572, -1.56743, -0.11223,
-    -2.5581, -0.04961, -2.57527, -0.18672, -2.5188 },
-
   /* Variable: M
    * Referenced by: '<Root>/Gain3'
    */
   10.0,
+
+  /* Variable: Wallace_Cal_tranp
+   * Referenced by: '<Root>/Gain'
+   */
+  { -0.02196001634, 0.004190267995, -0.186118155718, -17.483510971069,
+    1.224225640297, 16.644166946411, 0.965337395668, 19.793544769287,
+    -0.233169600368, -10.133704185486, -0.765193104744, -9.669131278992,
+    29.811275482178, 0.075847007334, 30.349569320679, 0.450678527355,
+    29.886123657227, 0.42908602953, 0.018749127164, 0.455327808857,
+    -1.043430089951, -0.245171427727, 1.023705482483, -0.20924256742,
+    1.182301402092, -0.00139987655, -0.586799740791, 0.394854426384,
+    -0.641057908535, -0.38928997516, -0.028681563213, -0.63898229599,
+    -0.011541210115, -0.659547865391, -0.044132679701, -0.627585828304 },
 
   /* Variable: c
    * Referenced by: '<Root>/Constant1'
@@ -54,7 +58,7 @@ P_CPS_Eva_T CPS_Eva_P = {
    *   '<Root>/Discrete-Time Integrator1'
    *   '<Root>/Unit Delay'
    */
-  0.0,
+  4.9641125000000015,
 
   /* Mask Parameter: EncoderInput_InputFilter
    * Referenced by: '<Root>/Encoder Input'
@@ -203,16 +207,6 @@ P_CPS_Eva_T CPS_Eva_P = {
    */
   0.0,
 
-  /* Expression: 3.5
-   * Referenced by: '<Root>/Saturation'
-   */
-  3.5,
-
-  /* Expression: -3.5
-   * Referenced by: '<Root>/Saturation'
-   */
-  -3.5,
-
   /* Computed Parameter: DiscreteTimeIntegrator_gainval
    * Referenced by: '<Root>/Discrete-Time Integrator'
    */
@@ -223,30 +217,10 @@ P_CPS_Eva_T CPS_Eva_P = {
    */
   0.0,
 
-  /* Expression: 0.5
-   * Referenced by: '<Root>/Saturation1'
-   */
-  0.5,
-
-  /* Expression: -0.5
-   * Referenced by: '<Root>/Saturation1'
-   */
-  -0.5,
-
   /* Computed Parameter: DiscreteTimeIntegrator1_gainval
    * Referenced by: '<Root>/Discrete-Time Integrator1'
    */
   0.0005,
-
-  /* Expression: 0.13
-   * Referenced by: '<Root>/Saturation2'
-   */
-  0.13,
-
-  /* Expression: -0.13
-   * Referenced by: '<Root>/Saturation2'
-   */
-  -0.13,
 
   /* Expression: 0
    * Referenced by: '<Root>/Constant3'
@@ -271,8 +245,8 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Expression: -tare.signals.values(end,1:6)
    * Referenced by: '<Root>/Bias'
    */
-  { -0.013550275752768955, -0.3773229267168503, 0.34215671466312531,
-    -0.88691297248986412, -0.29422586226778119, 0.22717195518666319 },
+  { -0.02029529205611634, -0.41344335869634952, 0.36716839069627111,
+    -0.93551713084879451, -0.30600796840495703, 0.21047138532489126 },
 
   /* Expression: -1
    * Referenced by: '<Root>/Gain5'
@@ -282,17 +256,17 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Expression: -tare.signals.values(end,7)
    * Referenced by: '<Root>/Bias1'
    */
-  -0.0091368468763758683,
+  -1.6705936627600757,
 
   /* Expression: 9.81
    * Referenced by: '<Root>/Gain1'
    */
   9.81,
 
-  /* Expression: 0.6+0.306
+  /* Expression: 0.6+0.386
    * Referenced by: '<Root>/Gain2'
    */
-  0.90599999999999992,
+  0.986,
 
   /* Expression: 0
    * Referenced by: '<Root>/Constant'

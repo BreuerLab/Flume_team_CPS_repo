@@ -7,9 +7,9 @@
  *
  * Code generation for model "set_heave_Eva".
  *
- * Model version              : 1.3
+ * Model version              : 1.6
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Feb 24 14:16:59 2023
+ * C source code generated on : Mon Feb 27 12:56:56 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -937,7 +937,7 @@ struct P_set_heave_Eva_T_ {
   real_T SineWave1_Bias;               /* Expression: 0
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
-  real_T SineWave1_Freq;               /* Expression: 2*3.14*(1/(2*10))
+  real_T SineWave1_Freq;               /* Expression: 2*3.14*(1/(2*8))
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
   real_T SineWave1_Hsin;               /* Computed Parameter: SineWave1_Hsin

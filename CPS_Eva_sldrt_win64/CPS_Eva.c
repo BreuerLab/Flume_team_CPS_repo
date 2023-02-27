@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.27
+ * Model version              : 1.32
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Feb 24 16:36:40 2023
+ * C source code generated on : Mon Feb 27 12:57:37 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -217,7 +217,6 @@ void CPS_Eva_output(void)
   real_T rtb_AnalogInput_0[6];
   real_T rtb_AnalogInput2;
   real_T rtb_EncoderInput;
-  real_T rtb_Saturation2;
   int32_T i;
   int32_T i_0;
   uint32_T ri;
@@ -280,43 +279,14 @@ void CPS_Eva_output(void)
   /* Gain: '<Root>/Gain3' incorporates:
    *  Sum: '<Root>/Sum'
    */
-  rtb_Saturation2 = 1.0 / CPS_Eva_P.M * (CPS_Eva_B.Fy_plus_ma_filtered -
+  CPS_Eva_B.Gain3 = 1.0 / CPS_Eva_P.M * (CPS_Eva_B.Fy_plus_ma_filtered -
     CPS_Eva_B.UnitDelay);
-
-  /* Saturate: '<Root>/Saturation' */
-  if (rtb_Saturation2 > CPS_Eva_P.Saturation_UpperSat) {
-    /* Saturate: '<Root>/Saturation' */
-    CPS_Eva_B.Saturation = CPS_Eva_P.Saturation_UpperSat;
-  } else if (rtb_Saturation2 < CPS_Eva_P.Saturation_LowerSat) {
-    /* Saturate: '<Root>/Saturation' */
-    CPS_Eva_B.Saturation = CPS_Eva_P.Saturation_LowerSat;
-  } else {
-    /* Saturate: '<Root>/Saturation' */
-    CPS_Eva_B.Saturation = rtb_Saturation2;
-  }
-
-  /* End of Saturate: '<Root>/Saturation' */
   if (rtmIsMajorTimeStep(CPS_Eva_M)) {
     real_T rtb_CPSorReference;
 
     /* DiscreteIntegrator: '<Root>/Discrete-Time Integrator' */
     CPS_Eva_B.DiscreteTimeIntegrator = CPS_Eva_P.DiscreteTimeIntegrator_gainval *
-      CPS_Eva_B.Saturation + CPS_Eva_DW.DiscreteTimeIntegrator_DSTATE;
-
-    /* Saturate: '<Root>/Saturation1' */
-    if (CPS_Eva_B.DiscreteTimeIntegrator > CPS_Eva_P.Saturation1_UpperSat) {
-      /* Saturate: '<Root>/Saturation1' */
-      CPS_Eva_B.Saturation1 = CPS_Eva_P.Saturation1_UpperSat;
-    } else if (CPS_Eva_B.DiscreteTimeIntegrator < CPS_Eva_P.Saturation1_LowerSat)
-    {
-      /* Saturate: '<Root>/Saturation1' */
-      CPS_Eva_B.Saturation1 = CPS_Eva_P.Saturation1_LowerSat;
-    } else {
-      /* Saturate: '<Root>/Saturation1' */
-      CPS_Eva_B.Saturation1 = CPS_Eva_B.DiscreteTimeIntegrator;
-    }
-
-    /* End of Saturate: '<Root>/Saturation1' */
+      CPS_Eva_B.Gain3 + CPS_Eva_DW.DiscreteTimeIntegrator_DSTATE;
 
     /* DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
     if (CPS_Eva_DW.DiscreteTimeIntegrator1_SYSTEM_ENABLE != 0) {
@@ -326,29 +296,18 @@ void CPS_Eva_output(void)
     } else {
       /* DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
       CPS_Eva_B.DiscreteTimeIntegrator1 =
-        CPS_Eva_P.DiscreteTimeIntegrator1_gainval * CPS_Eva_B.Saturation1 +
+        CPS_Eva_P.DiscreteTimeIntegrator1_gainval *
+        CPS_Eva_B.DiscreteTimeIntegrator +
         CPS_Eva_DW.DiscreteTimeIntegrator1_DSTATE;
     }
 
     /* End of DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
 
-    /* Saturate: '<Root>/Saturation2' */
-    if (CPS_Eva_B.DiscreteTimeIntegrator1 > CPS_Eva_P.Saturation2_UpperSat) {
-      rtb_Saturation2 = CPS_Eva_P.Saturation2_UpperSat;
-    } else if (CPS_Eva_B.DiscreteTimeIntegrator1 <
-               CPS_Eva_P.Saturation2_LowerSat) {
-      rtb_Saturation2 = CPS_Eva_P.Saturation2_LowerSat;
-    } else {
-      rtb_Saturation2 = CPS_Eva_B.DiscreteTimeIntegrator1;
-    }
-
-    /* End of Saturate: '<Root>/Saturation2' */
-
     /* ManualSwitch: '<Root>/CPS or Reference' incorporates:
      *  ManualSwitch: '<Root>/Signal or zero'
      */
     if (CPS_Eva_P.CPSorReference_CurrentSetting == 1) {
-      rtb_CPSorReference = rtb_Saturation2;
+      rtb_CPSorReference = CPS_Eva_B.DiscreteTimeIntegrator1;
     } else if (CPS_Eva_P.Signalorzero_CurrentSetting == 1) {
       /* ManualSwitch: '<Root>/Signal or zero' incorporates:
        *  ManualSwitch: '<Root>/Sine or custom trajectory'
@@ -452,7 +411,7 @@ void CPS_Eva_output(void)
       /* Gain: '<Root>/Gain' */
       CPS_Eva_B.Gain[i] = 0.0;
       for (i_0 = 0; i_0 < 6; i_0++) {
-        CPS_Eva_B.Gain[i] += CPS_Eva_P.Gromit_Cal_tranp[6 * i + i_0] *
+        CPS_Eva_B.Gain[i] += CPS_Eva_P.Wallace_Cal_tranp[6 * i + i_0] *
           rtb_AnalogInput_0[i_0];
       }
 
@@ -513,8 +472,8 @@ void CPS_Eva_output(void)
      *  Product: '<Root>/Product'
      *  Product: '<Root>/Product1'
      */
-    CPS_Eva_B.Sum1 = CPS_Eva_P.k * rtb_Saturation2 + CPS_Eva_P.c *
-      CPS_Eva_B.Saturation1;
+    CPS_Eva_B.Sum1 = CPS_Eva_P.k * CPS_Eva_B.DiscreteTimeIntegrator1 +
+      CPS_Eva_P.c * CPS_Eva_B.DiscreteTimeIntegrator;
   }
 }
 
@@ -527,14 +486,14 @@ void CPS_Eva_update(void)
 
     /* Update for DiscreteIntegrator: '<Root>/Discrete-Time Integrator' */
     CPS_Eva_DW.DiscreteTimeIntegrator_DSTATE =
-      CPS_Eva_P.DiscreteTimeIntegrator_gainval * CPS_Eva_B.Saturation +
+      CPS_Eva_P.DiscreteTimeIntegrator_gainval * CPS_Eva_B.Gain3 +
       CPS_Eva_B.DiscreteTimeIntegrator;
 
     /* Update for DiscreteIntegrator: '<Root>/Discrete-Time Integrator1' */
     CPS_Eva_DW.DiscreteTimeIntegrator1_SYSTEM_ENABLE = 0U;
     CPS_Eva_DW.DiscreteTimeIntegrator1_DSTATE =
-      CPS_Eva_P.DiscreteTimeIntegrator1_gainval * CPS_Eva_B.Saturation1 +
-      CPS_Eva_B.DiscreteTimeIntegrator1;
+      CPS_Eva_P.DiscreteTimeIntegrator1_gainval *
+      CPS_Eva_B.DiscreteTimeIntegrator + CPS_Eva_B.DiscreteTimeIntegrator1;
   }
 
   if (rtmIsMajorTimeStep(CPS_Eva_M)) {
@@ -837,10 +796,10 @@ RT_MODEL_CPS_Eva_T *CPS_Eva(void)
   CPS_Eva_M->Timing.stepSize1 = 0.001;
 
   /* External mode info */
-  CPS_Eva_M->Sizes.checksums[0] = (3237297469U);
-  CPS_Eva_M->Sizes.checksums[1] = (4223103760U);
-  CPS_Eva_M->Sizes.checksums[2] = (2513661975U);
-  CPS_Eva_M->Sizes.checksums[3] = (2261803999U);
+  CPS_Eva_M->Sizes.checksums[0] = (3981891527U);
+  CPS_Eva_M->Sizes.checksums[1] = (433945834U);
+  CPS_Eva_M->Sizes.checksums[2] = (2041282079U);
+  CPS_Eva_M->Sizes.checksums[3] = (346603168U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -909,9 +868,9 @@ RT_MODEL_CPS_Eva_T *CPS_Eva(void)
   CPS_Eva_M->Sizes.numU = (0);         /* Number of model inputs */
   CPS_Eva_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   CPS_Eva_M->Sizes.numSampTimes = (2); /* Number of sample times */
-  CPS_Eva_M->Sizes.numBlocks = (52);   /* Number of blocks */
-  CPS_Eva_M->Sizes.numBlockIO = (17);  /* Number of block outputs */
-  CPS_Eva_M->Sizes.numBlockPrms = (138);/* Sum of parameter "widths" */
+  CPS_Eva_M->Sizes.numBlocks = (49);   /* Number of blocks */
+  CPS_Eva_M->Sizes.numBlockIO = (16);  /* Number of block outputs */
+  CPS_Eva_M->Sizes.numBlockPrms = (132);/* Sum of parameter "widths" */
   return CPS_Eva_M;
 }
 

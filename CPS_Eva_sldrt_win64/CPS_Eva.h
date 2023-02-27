@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.27
+ * Model version              : 1.32
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Feb 24 16:36:40 2023
+ * C source code generated on : Mon Feb 27 12:57:37 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -868,9 +868,8 @@
 typedef struct {
   real_T UnitDelay;                    /* '<Root>/Unit Delay' */
   real_T Fy_plus_ma_filtered;          /* '<Root>/Analog Filter Design' */
-  real_T Saturation;                   /* '<Root>/Saturation' */
+  real_T Gain3;                        /* '<Root>/Gain3' */
   real_T DiscreteTimeIntegrator;       /* '<Root>/Discrete-Time Integrator' */
-  real_T Saturation1;                  /* '<Root>/Saturation1' */
   real_T DiscreteTimeIntegrator1;      /* '<Root>/Discrete-Time Integrator1' */
   real_T Gain[6];                      /* '<Root>/Gain' */
   real_T Fy;                           /* '<Root>/Gain5' */
@@ -964,11 +963,11 @@ typedef struct {
 
 /* Parameters (default storage) */
 struct P_CPS_Eva_T_ {
-  real_T Gromit_Cal_tranp[36];         /* Variable: Gromit_Cal_tranp
-                                        * Referenced by: '<Root>/Gain'
-                                        */
   real_T M;                            /* Variable: M
                                         * Referenced by: '<Root>/Gain3'
+                                        */
+  real_T Wallace_Cal_tranp[36];        /* Variable: Wallace_Cal_tranp
+                                        * Referenced by: '<Root>/Gain'
                                         */
   real_T c;                            /* Variable: c
                                         * Referenced by: '<Root>/Constant1'
@@ -1082,12 +1081,6 @@ struct P_CPS_Eva_T_ {
   real_T AnalogFilterDesign_InitialCondition;/* Expression: 0
                                               * Referenced by: '<Root>/Analog Filter Design'
                                               */
-  real_T Saturation_UpperSat;          /* Expression: 3.5
-                                        * Referenced by: '<Root>/Saturation'
-                                        */
-  real_T Saturation_LowerSat;          /* Expression: -3.5
-                                        * Referenced by: '<Root>/Saturation'
-                                        */
   real_T DiscreteTimeIntegrator_gainval;
                            /* Computed Parameter: DiscreteTimeIntegrator_gainval
                             * Referenced by: '<Root>/Discrete-Time Integrator'
@@ -1095,22 +1088,10 @@ struct P_CPS_Eva_T_ {
   real_T DiscreteTimeIntegrator_IC;    /* Expression: 0
                                         * Referenced by: '<Root>/Discrete-Time Integrator'
                                         */
-  real_T Saturation1_UpperSat;         /* Expression: 0.5
-                                        * Referenced by: '<Root>/Saturation1'
-                                        */
-  real_T Saturation1_LowerSat;         /* Expression: -0.5
-                                        * Referenced by: '<Root>/Saturation1'
-                                        */
   real_T DiscreteTimeIntegrator1_gainval;
                           /* Computed Parameter: DiscreteTimeIntegrator1_gainval
                            * Referenced by: '<Root>/Discrete-Time Integrator1'
                            */
-  real_T Saturation2_UpperSat;         /* Expression: 0.13
-                                        * Referenced by: '<Root>/Saturation2'
-                                        */
-  real_T Saturation2_LowerSat;         /* Expression: -0.13
-                                        * Referenced by: '<Root>/Saturation2'
-                                        */
   real_T Constant3_Value;              /* Expression: 0
                                         * Referenced by: '<Root>/Constant3'
                                         */
@@ -1135,7 +1116,7 @@ struct P_CPS_Eva_T_ {
   real_T Gain1_Gain;                   /* Expression: 9.81
                                         * Referenced by: '<Root>/Gain1'
                                         */
-  real_T Gain2_Gain;                   /* Expression: 0.6+0.306
+  real_T Gain2_Gain;                   /* Expression: 0.6+0.386
                                         * Referenced by: '<Root>/Gain2'
                                         */
   real_T Constant_Value;               /* Expression: 0

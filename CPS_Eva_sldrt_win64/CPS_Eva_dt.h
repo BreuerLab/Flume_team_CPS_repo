@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.27
+ * Model version              : 1.32
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Feb 24 16:36:40 2023
+ * C source code generated on : Mon Feb 27 12:57:37 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -76,7 +76,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&CPS_Eva_B.UnitDelay), 0, 0, 29 }
+  { (char_T *)(&CPS_Eva_B.UnitDelay), 0, 0, 28 }
   ,
 
   { (char_T *)(&CPS_Eva_DW.UnitDelay_DSTATE), 0, 0, 3 },
@@ -94,11 +94,11 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&CPS_Eva_P.Gromit_Cal_tranp[0]), 0, 0, 51 },
+  { (char_T *)(&CPS_Eva_P.M), 0, 0, 51 },
 
   { (char_T *)(&CPS_Eva_P.AnalogOutput_Channels), 6, 0, 22 },
 
-  { (char_T *)(&CPS_Eva_P.Gain9_Gain), 0, 0, 40 },
+  { (char_T *)(&CPS_Eva_P.Gain9_Gain), 0, 0, 34 },
 
   { (char_T *)(&CPS_Eva_P.AnalogFilterDesign_A_ir[0]), 7, 0, 21 },
 

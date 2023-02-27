@@ -7,9 +7,9 @@
  *
  * Code generation for model "set_heave_Eva".
  *
- * Model version              : 1.3
+ * Model version              : 1.6
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Feb 24 14:16:59 2023
+ * C source code generated on : Mon Feb 27 12:56:56 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -281,14 +281,14 @@ RT_MODEL_set_heave_Eva_T *set_heave_Eva(void)
     set_heave_Eva_M->Timing.sampleHits = (&mdlSampleHits[0]);
   }
 
-  rtmSetTFinal(set_heave_Eva_M, 10.0);
+  rtmSetTFinal(set_heave_Eva_M, 8.0);
   set_heave_Eva_M->Timing.stepSize0 = 0.001;
 
   /* External mode info */
-  set_heave_Eva_M->Sizes.checksums[0] = (3744375731U);
-  set_heave_Eva_M->Sizes.checksums[1] = (3878004775U);
-  set_heave_Eva_M->Sizes.checksums[2] = (2054235025U);
-  set_heave_Eva_M->Sizes.checksums[3] = (4221087644U);
+  set_heave_Eva_M->Sizes.checksums[0] = (2540973481U);
+  set_heave_Eva_M->Sizes.checksums[1] = (201917156U);
+  set_heave_Eva_M->Sizes.checksums[2] = (1825666060U);
+  set_heave_Eva_M->Sizes.checksums[3] = (3783948945U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
