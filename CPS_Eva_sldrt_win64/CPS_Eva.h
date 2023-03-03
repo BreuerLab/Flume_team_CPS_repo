@@ -9,7 +9,7 @@
  *
  * Model version              : 1.32
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Mon Feb 27 12:57:37 2023
+ * C source code generated on : Mon Feb 27 14:03:45 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -963,11 +963,11 @@ typedef struct {
 
 /* Parameters (default storage) */
 struct P_CPS_Eva_T_ {
+  real_T Gromit_Cal_tranp[36];         /* Variable: Gromit_Cal_tranp
+                                        * Referenced by: '<Root>/Gain'
+                                        */
   real_T M;                            /* Variable: M
                                         * Referenced by: '<Root>/Gain3'
-                                        */
-  real_T Wallace_Cal_tranp[36];        /* Variable: Wallace_Cal_tranp
-                                        * Referenced by: '<Root>/Gain'
                                         */
   real_T c;                            /* Variable: c
                                         * Referenced by: '<Root>/Constant1'

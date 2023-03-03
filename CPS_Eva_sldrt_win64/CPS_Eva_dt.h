@@ -9,7 +9,7 @@
  *
  * Model version              : 1.32
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Mon Feb 27 12:57:37 2023
+ * C source code generated on : Mon Feb 27 14:03:45 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -94,7 +94,7 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&CPS_Eva_P.M), 0, 0, 51 },
+  { (char_T *)(&CPS_Eva_P.Gromit_Cal_tranp[0]), 0, 0, 51 },
 
   { (char_T *)(&CPS_Eva_P.AnalogOutput_Channels), 6, 0, 22 },
 

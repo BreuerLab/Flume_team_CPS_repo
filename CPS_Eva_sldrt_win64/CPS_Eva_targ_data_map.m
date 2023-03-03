@@ -31,13 +31,13 @@
             section.nData     = 16;
             section.data(16)  = dumData; %prealloc
 
-                    ;% CPS_Eva_P.M
+                    ;% CPS_Eva_P.Gromit_Cal_tranp
                     section.data(1).logicalSrcIdx = 0;
                     section.data(1).dtTransOffset = 0;
 
-                    ;% CPS_Eva_P.Wallace_Cal_tranp
+                    ;% CPS_Eva_P.M
                     section.data(2).logicalSrcIdx = 1;
-                    section.data(2).dtTransOffset = 1;
+                    section.data(2).dtTransOffset = 36;
 
                     ;% CPS_Eva_P.c
                     section.data(3).logicalSrcIdx = 2;
@@ -571,8 +571,8 @@
     ;%
 
 
-    targMap.checksum0 = 3981891527;
-    targMap.checksum1 = 433945834;
-    targMap.checksum2 = 2041282079;
-    targMap.checksum3 = 346603168;
+    targMap.checksum0 = 2870214160;
+    targMap.checksum1 = 3106519728;
+    targMap.checksum2 = 2998808317;
+    targMap.checksum3 = 998004284;
 

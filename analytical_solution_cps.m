@@ -26,3 +26,4 @@ elseif(root(1)==root(2)) %repeated roots
     sol=exp(root(1).*tim).*(c1+c2.*tim);
 end
 analyt=sol/x_0;
+%plot(tim*((k/M)^0.5)/(2*pi),sol/x_0);

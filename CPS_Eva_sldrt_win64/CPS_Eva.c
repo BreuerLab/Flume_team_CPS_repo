@@ -9,7 +9,7 @@
  *
  * Model version              : 1.32
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Mon Feb 27 12:57:37 2023
+ * C source code generated on : Mon Feb 27 14:03:45 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -411,7 +411,7 @@ void CPS_Eva_output(void)
       /* Gain: '<Root>/Gain' */
       CPS_Eva_B.Gain[i] = 0.0;
       for (i_0 = 0; i_0 < 6; i_0++) {
-        CPS_Eva_B.Gain[i] += CPS_Eva_P.Wallace_Cal_tranp[6 * i + i_0] *
+        CPS_Eva_B.Gain[i] += CPS_Eva_P.Gromit_Cal_tranp[6 * i + i_0] *
           rtb_AnalogInput_0[i_0];
       }
 
@@ -791,15 +791,15 @@ RT_MODEL_CPS_Eva_T *CPS_Eva(void)
     CPS_Eva_M->Timing.sampleHits = (&mdlSampleHits[0]);
   }
 
-  rtmSetTFinal(CPS_Eva_M, 10.0);
+  rtmSetTFinal(CPS_Eva_M, 50.929);
   CPS_Eva_M->Timing.stepSize0 = 0.001;
   CPS_Eva_M->Timing.stepSize1 = 0.001;
 
   /* External mode info */
-  CPS_Eva_M->Sizes.checksums[0] = (3981891527U);
-  CPS_Eva_M->Sizes.checksums[1] = (433945834U);
-  CPS_Eva_M->Sizes.checksums[2] = (2041282079U);
-  CPS_Eva_M->Sizes.checksums[3] = (346603168U);
+  CPS_Eva_M->Sizes.checksums[0] = (2870214160U);
+  CPS_Eva_M->Sizes.checksums[1] = (3106519728U);
+  CPS_Eva_M->Sizes.checksums[2] = (2998808317U);
+  CPS_Eva_M->Sizes.checksums[3] = (998004284U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
