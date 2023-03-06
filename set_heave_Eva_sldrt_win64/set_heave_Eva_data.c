@@ -7,9 +7,9 @@
  *
  * Code generation for model "set_heave_Eva".
  *
- * Model version              : 1.6
+ * Model version              : 1.8
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Mon Feb 27 14:02:44 2023
+ * C source code generated on : Sun Mar  5 21:45:38 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -28,7 +28,7 @@ P_set_heave_Eva_T set_heave_Eva_P = {
    *   '<Root>/Bias3'
    *   '<Root>/Constant2'
    */
-  3.3858200000000016,
+  -0.017145000000000188,
 
   /* Mask Parameter: EncoderInput_InputFilter
    * Referenced by: '<Root>/Encoder Input'
@@ -85,30 +85,30 @@ P_set_heave_Eva_T set_heave_Eva_P = {
    */
   0.0,
 
-  /* Expression: 2*3.14*(1/(2*5))
+  /* Expression: 2*3.14*(1/(2*7))
    * Referenced by: '<Root>/Sine Wave1'
    */
-  0.62800000000000011,
+  0.44857142857142857,
 
   /* Computed Parameter: SineWave1_Hsin
    * Referenced by: '<Root>/Sine Wave1'
    */
-  0.00062799995872114226,
+  0.00044857141352811289,
 
   /* Computed Parameter: SineWave1_HCos
    * Referenced by: '<Root>/Sine Wave1'
    */
-  0.99999980280800649,
+  0.99999989939183842,
 
   /* Computed Parameter: SineWave1_PSin
    * Referenced by: '<Root>/Sine Wave1'
    */
-  0.99999980280800649,
+  0.99999989939183842,
 
   /* Computed Parameter: SineWave1_PCos
    * Referenced by: '<Root>/Sine Wave1'
    */
-  0.00062799995872127637,
+  0.00044857141352809934,
 
   /* Expression: 5
    * Referenced by: '<Root>/Constant1'
