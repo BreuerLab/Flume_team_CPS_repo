@@ -7,9 +7,9 @@
  *
  * Code generation for model "set_heave_Eva".
  *
- * Model version              : 1.8
+ * Model version              : 1.9
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Sun Mar  5 21:45:38 2023
+ * C source code generated on : Tue Mar  7 09:53:31 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -28,7 +28,7 @@ P_set_heave_Eva_T set_heave_Eva_P = {
    *   '<Root>/Bias3'
    *   '<Root>/Constant2'
    */
-  -0.017145000000000188,
+  0.030797499999999367,
 
   /* Mask Parameter: EncoderInput_InputFilter
    * Referenced by: '<Root>/Encoder Input'
