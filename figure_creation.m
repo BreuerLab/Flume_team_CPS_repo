@@ -1,7 +1,24 @@
 %figure creation
-trial_name="ringdown-"+model_shape+"-M"+M+"-d"+dampratio+"-F"+f_nat;
+trial_name=erase(all_files(filenum).name,'-workspace.mat');%"ringdown-"+model_shape+"-M"+M+"-d"+dampratio+"-F"+f_nat;
 trial_name=strrep(trial_name,".","_");
 maxylim=(Commanded_and_measured_position(end,1)*omega_n)/(2*pi);
+
+if exist('model_shape','var') == 0
+model_shape='circcyl';
+end
+
+if exist('enviornment','var') == 0
+enviornment='air';
+end
+
+    all_stats(filenum,1)= M;
+    all_stats(filenum,2)= dampratio;
+    all_stats(filenum,3)= f_nat;
+    %all_stats(filenum,4)= model_shape;
+    all_stats(filenum,5)= RMSE_ana_cps_f_zero;
+    all_stats(filenum,6)= RMSE_ana_cps_commanded;
+    all_stats(filenum,7)= RMSE_cps_commanded_cps_encoder;
+    all_stats(filenum,8)= RMSE_ana_cps_encoder;
 
 %% Error aka just the normal heave plots
 

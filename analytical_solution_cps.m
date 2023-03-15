@@ -3,7 +3,7 @@
 % parameters you can use this code to determine the analytical solution for
 % the motion of the heave given an offset of x_0
 total_time=duration_sim;
-x_0=5; %start_position_cm;
+x_0=Commanded_and_measured_position(1,3); %start_position_cm;
 i=[0:T:total_time];
 n=0;
 x=zeros(1,size(i,2));

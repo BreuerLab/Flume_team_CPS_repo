@@ -9,7 +9,7 @@
  *
  * Model version              : 1.9
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Tue Mar  7 09:53:31 2023
+ * C source code generated on : Fri Mar 10 14:18:01 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -28,7 +28,7 @@ P_set_heave_Eva_T set_heave_Eva_P = {
    *   '<Root>/Bias3'
    *   '<Root>/Constant2'
    */
-  0.030797499999999367,
+  -0.0044450000000004763,
 
   /* Mask Parameter: EncoderInput_InputFilter
    * Referenced by: '<Root>/Encoder Input'
@@ -110,10 +110,10 @@ P_set_heave_Eva_T set_heave_Eva_P = {
    */
   0.00044857141352809934,
 
-  /* Expression: 5
+  /* Expression: 10
    * Referenced by: '<Root>/Constant1'
    */
-  5.0,
+  10.0,
 
   /* Expression: -1/(2*3)
    * Referenced by: '<Root>/Gain1'

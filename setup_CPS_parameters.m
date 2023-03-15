@@ -3,11 +3,11 @@
 sample_rate=1000;
 T=1/sample_rate;
 start_position_cm = 0; % Initial heave position in meters
-model_shape="ellipse";
+model_shape="circcyl";
 enviornment="air";
 
 %% System parameters
-M = 5; % 10 simulated mass in kg
+M = 10; % 10 simulated mass in kg
 dampratio = 0.1; % 0.1 damping ratio
 f_nat = 1.5; % 1 natural frequency in Hz
 

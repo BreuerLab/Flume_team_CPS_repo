@@ -1,8 +1,15 @@
 %figure creation
-trial_name="ringdown-"+model_shape+"-M"+M+"-d"+dampratio+"-F"+f_nat;
+trial_name=erase(all_files(filenum).name,'-workspace.mat');%"ringdown-"+model_shape+"-M"+M+"-d"+dampratio+"-F"+f_nat;
 trial_name=strrep(trial_name,".","_");
 maxylim=(Commanded_and_measured_position(end,1)*omega_n)/(2*pi);
 
+if exist('model_shape','var') == 0
+model_shape='circcyl';
+end
+
+if exist('enviorn','var') == 0
+enviornment='air';
+end
 %% Error aka just the normal heave plots
 
 fig_error=figure('Name','RMSE_error_plot');
@@ -56,7 +63,7 @@ lag_ana_vs_unforcedcps=lag_code(analyt',cps_f_zero');
 lag_ana_vs_cps_com=lag_code(analyt',Commanded_and_measured_position(:,2)/x_0);
 lag_com_vs_enc=lag_code(Commanded_and_measured_position(:,2)/x_0,Commanded_and_measured_position(:,3)/x_0);
 lag_ana_vs_cps_enc=lag_code(analyt',Commanded_and_measured_position(:,3)/x_0);
-maxlag=max([lag_ana_vs_unforcedcps(1) lag_ana_vs_cps_com(1) lag_com_vs_enc(1) lag_ana_vs_cps_enc(1)])
+maxlag=max([lag_ana_vs_unforcedcps(1) lag_ana_vs_cps_com(1) lag_com_vs_enc(1) lag_ana_vs_cps_enc(1)]);
 
 
 fig_lag= figure('Name','lag_plot');
@@ -74,7 +81,7 @@ plot(0.75:0.5:((size(lag_com_vs_enc)/2)-0.25),lag_com_vs_enc(1:end-1),'-*','Colo
 xlabel('cycles','FontSize',16)
 ylabel('ms','Color','k','FontSize',16)
 legend('analytical vs unforced virtual cps','analytical vs CPS commanded','analytical vs CPS measured','CPS measured vs CPS commanded','Fontsize',11);
-ylim([0 maxlag*1.2])
+ylim([0 maxlag*1.5])
 title('delay at zeros in ms')
 %fig_lag_cycle_percent=figure('Name','lag_cycle_percent');
 
@@ -83,7 +90,7 @@ yyaxis left
 
 ylabel('percent of cycle','Color','k','FontSize',16)
 xlim([0 maxylim])
-ylim([0 maxlag/1000*f_nat*1.2*100])
+ylim([0 maxlag/1000*f_nat*1.5*100])
 title('delay between solutions at zeros','FontSize',16)
 
 %% Amplitude at maxes comparison plot 
@@ -95,13 +102,13 @@ ampratio_ana_v_enc=amplitude_ratio_code(analyt',Commanded_and_measured_position(
 
 plot(0.5:0.5:((size(ampratio_ana_v_unforced)/2)),ampratio_ana_v_unforced,'-*','Color', [0 0.4470 0.7410])
 hold on;
-plot(0.5:0.5:((size(ampratio_ana_v_com)/2)),ampratio_ana_v_com,'-*','Color',[0.4940 0.1840 0.5560])
-plot(0.5:0.5:((size(ampratio_ana_v_enc)/2)),ampratio_ana_v_enc,'-*','Color',[0.8500 0.3250 0.0980])
-plot(0.5:0.5:((size(ampratio_com_v_enc)/2)),ampratio_com_v_enc,'-*','Color',[0.9290 0.6940 0.1250])
+plot(0.5:0.5:((size(ampratio_ana_v_com,1)/2)),ampratio_ana_v_com,'-*','Color',[0.4940 0.1840 0.5560])
+plot(0.5:0.5:((size(ampratio_ana_v_enc,1)/2)),ampratio_ana_v_enc,'-*','Color',[0.8500 0.3250 0.0980])
+plot(0.5:0.5:((size(ampratio_com_v_enc,1)/2)),ampratio_com_v_enc,'-*','Color',[0.9290 0.6940 0.1250])
 xlim([0 maxylim])
-ylim([-1.2 1.2])
-xlabel('cycles')
-ylabel()
+ylim([0 1.5])
+xlabel('cycles','FontSize',16)
+ylabel('ratio','FontSize',16)
 legend('analytical vs unforced virtual cps','analytical vs CPS commanded','analytical vs CPS measured','CPS measured vs CPS commanded','Fontsize',11,'Location','southwest');
 title('amplitude ratio between solutions at extrema','FontSize',16)
 
@@ -109,21 +116,32 @@ title('amplitude ratio between solutions at extrema','FontSize',16)
 import mlreportgen.report.*
 import mlreportgen.dom.*
 
-saveas(fig_error,trial_name+"-error_plot.png");
-impath=which(trial_name+'-error_plot.png');
+saveas(fig_error,trial_name+'-position_plot.png');
+impath=which(trial_name+"-position_plot.png");
 img1=Image(impath);
-img1.Width="7in";
-img1.Height="4.63in";
+img1.Width="2.92in";
+img1.Height="2.09in";
 
-saveas(fig_forces,trial_name+"-forces_plot.png");
-impath2=which(trial_name+'-forces_plot.png');
+saveas(fig_forces,trial_name+'-forces_plot.png');
+impath2=which(trial_name+"-forces_plot.png");
 img2=Image(impath2);
-img2.Width="6.71in";
-img2.Height="4.29in";
+img2.Width="4in";
+img2.Height="3in";
 
 saveas(fig_diff,trial_name+"-difference_plot.png");
-
 impath3=which(trial_name+'-difference_plot.png');
 img3=Image(impath3);
-img3.Width="6.71in";
-img3.Height="4.29in";
+img3.Width="2.92in";
+img3.Height="2.09in";
+
+saveas(fig_lag,trial_name+"-lag_plot.png");
+impath4=which(trial_name+'-lag_plot.png');
+img4=Image(impath4);
+img4.Width="2.92in";
+img4.Height="2.09in";
+
+saveas(fig_amp_max,trial_name+"-amp_plot.png");
+impath5=which(trial_name+'-amp_plot.png');
+img5=Image(impath5);
+img5.Width="2.92in";
+img5.Height="2.09in";

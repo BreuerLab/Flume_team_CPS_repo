@@ -26,8 +26,7 @@ disp('virtual unforced simulation complete');
 %% Error assessment
 CPS_error
 disp('error analysis complete')
-%saveas(fig_error,trial_name+"-error-plot.png");
-%saveas(fig_forces,trial_name+"-forces-plot.png");
+
 %% Outputting stats
 import mlreportgen.report.*
 import mlreportgen.dom.*
