@@ -174,24 +174,20 @@
         ;%
         ;% Auto data (set_heave_Eva_B)
         ;%
-            section.nData     = 4;
-            section.data(4)  = dumData; %prealloc
+            section.nData     = 3;
+            section.data(3)  = dumData; %prealloc
 
                     ;% set_heave_Eva_B.Constant1
                     section.data(1).logicalSrcIdx = 0;
                     section.data(1).dtTransOffset = 0;
 
-                    ;% set_heave_Eva_B.Sum
+                    ;% set_heave_Eva_B.MeasuredPosition
                     section.data(2).logicalSrcIdx = 1;
                     section.data(2).dtTransOffset = 1;
 
-                    ;% set_heave_Eva_B.MeasuredPosition
+                    ;% set_heave_Eva_B.CommandedPosition
                     section.data(3).logicalSrcIdx = 2;
                     section.data(3).dtTransOffset = 2;
-
-                    ;% set_heave_Eva_B.CommandedPosition
-                    section.data(4).logicalSrcIdx = 3;
-                    section.data(4).dtTransOffset = 3;
 
             nTotData = nTotData + section.nData;
             sigMap.sections(1) = section;
@@ -253,8 +249,8 @@
             dworkMap.sections(1) = section;
             clear section
 
-            section.nData     = 6;
-            section.data(6)  = dumData; %prealloc
+            section.nData     = 5;
+            section.data(5)  = dumData; %prealloc
 
                     ;% set_heave_Eva_DW.AnalogOutput_PWORK
                     section.data(1).logicalSrcIdx = 2;
@@ -268,17 +264,13 @@
                     section.data(3).logicalSrcIdx = 4;
                     section.data(3).dtTransOffset = 2;
 
-                    ;% set_heave_Eva_DW.Scope2_PWORK.LoggedData
+                    ;% set_heave_Eva_DW.ToWorkspace1_PWORK.LoggedData
                     section.data(4).logicalSrcIdx = 5;
                     section.data(4).dtTransOffset = 3;
 
-                    ;% set_heave_Eva_DW.ToWorkspace1_PWORK.LoggedData
+                    ;% set_heave_Eva_DW.ToWorkspace6_PWORK.LoggedData
                     section.data(5).logicalSrcIdx = 6;
                     section.data(5).dtTransOffset = 4;
-
-                    ;% set_heave_Eva_DW.ToWorkspace6_PWORK.LoggedData
-                    section.data(6).logicalSrcIdx = 7;
-                    section.data(6).dtTransOffset = 5;
 
             nTotData = nTotData + section.nData;
             dworkMap.sections(2) = section;
@@ -288,7 +280,7 @@
             section.data(1)  = dumData; %prealloc
 
                     ;% set_heave_Eva_DW.systemEnable
-                    section.data(1).logicalSrcIdx = 8;
+                    section.data(1).logicalSrcIdx = 7;
                     section.data(1).dtTransOffset = 0;
 
             nTotData = nTotData + section.nData;
@@ -321,8 +313,8 @@
     ;%
 
 
-    targMap.checksum0 = 3819089990;
-    targMap.checksum1 = 2258989693;
-    targMap.checksum2 = 1839937404;
-    targMap.checksum3 = 3483292221;
+    targMap.checksum0 = 2383692524;
+    targMap.checksum1 = 316623931;
+    targMap.checksum2 = 4146471418;
+    targMap.checksum3 = 1755555141;
 

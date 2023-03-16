@@ -4,7 +4,7 @@ sample_rate=1000;
 T=1/sample_rate;
 start_position_cm = 0; % Initial heave position in meters
 model_shape="circcyl";
-enviornment="air";
+enviornment="water";
 
 %% System parameters
 M = 10; % 10 simulated mass in kg

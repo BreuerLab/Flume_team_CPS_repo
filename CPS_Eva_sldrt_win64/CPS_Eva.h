@@ -9,7 +9,7 @@
  *
  * Model version              : 1.34
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Mar 10 14:05:40 2023
+ * C source code generated on : Wed Mar 15 18:42:35 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -1116,7 +1116,7 @@ struct P_CPS_Eva_T_ {
   real_T Gain1_Gain;                   /* Expression: 9.81
                                         * Referenced by: '<Root>/Gain1'
                                         */
-  real_T Gain2_Gain;                   /* Expression: 0.6+0.386
+  real_T Gain2_Gain;                   /* Expression: 0.6+0.302
                                         * Referenced by: '<Root>/Gain2'
                                         */
   real_T Constant_Value;               /* Expression: 0

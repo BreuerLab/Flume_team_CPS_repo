@@ -1,14 +1,14 @@
 %run setup_CPS_parameters and tare before first run 
 %% System parameters
-M = 10; % 10 simulated mass in kg
+M = 5; % 10 simulated mass in kg
 dampratio = 0.05; % 0.1 damping ratio
-f_nat = 0.5; % 1 natural frequency in Hz
+f_nat = 0.7936; % 1 natural frequency in Hz
     k = (2*pi*f_nat)^2*M;
     c = 2*dampratio*sqrt(k*M);
 duration_sim = 2*(M/c)*8; % Total duration of simulink experiment, in seconds
 trial_name="ringdown-"+model_shape+"-M"+M+"-d"+dampratio+"-F"+f_nat;
 trial_name=strrep(trial_name,".","_");
-%% tare
+%% tare while flume is OFF
 set_param('CPS_tare_Eva','SimulationCommand','start');
 disp('tared');
 %% Set heave

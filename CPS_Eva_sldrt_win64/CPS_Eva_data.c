@@ -9,7 +9,7 @@
  *
  * Model version              : 1.34
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Mar 10 14:05:40 2023
+ * C source code generated on : Wed Mar 15 18:42:35 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -38,19 +38,19 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Variable: M
    * Referenced by: '<Root>/Gain3'
    */
-  10.0,
+  5.0,
 
   /* Variable: c
    * Referenced by: '<Root>/Constant1'
    */
-  18.849555921538759,
+  2.4931679298888603,
 
   /* Variable: k
    * Referenced by:
    *   '<Root>/Constant2'
    *   '<Root>/Unit Delay'
    */
-  888.2643960980422,
+  124.31772653252605,
 
   /* Variable: start_position_cm
    * Referenced by:
@@ -58,7 +58,7 @@ P_CPS_Eva_T CPS_Eva_P = {
    *   '<Root>/Discrete-Time Integrator1'
    *   '<Root>/Unit Delay'
    */
-  4.966335,
+  -1.6395700000000004,
 
   /* Mask Parameter: EncoderInput_InputFilter
    * Referenced by: '<Root>/Encoder Input'
@@ -245,8 +245,8 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Expression: -tare.signals.values(end,1:6)
    * Referenced by: '<Root>/Bias'
    */
-  { -0.038286909139432765, -0.35318751129821219, 0.34038630528772296,
-    -0.88353533573522436, -0.28083162028413472, 0.23115002623730274 },
+  { 0.059426528176812835, -0.35485293829582043, 0.4541970892974444,
+    -0.852941725502833, -0.17925733243996622, 0.22625420649768371 },
 
   /* Expression: -1
    * Referenced by: '<Root>/Gain5'
@@ -256,17 +256,17 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Expression: -tare.signals.values(end,7)
    * Referenced by: '<Root>/Bias1'
    */
-  -1.6722323442597073,
+  -1.6773494892947263,
 
   /* Expression: 9.81
    * Referenced by: '<Root>/Gain1'
    */
   9.81,
 
-  /* Expression: 0.6+0.386
+  /* Expression: 0.6+0.302
    * Referenced by: '<Root>/Gain2'
    */
-  0.986,
+  0.90199999999999991,
 
   /* Expression: 0
    * Referenced by: '<Root>/Constant'

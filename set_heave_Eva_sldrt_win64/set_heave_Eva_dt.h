@@ -9,7 +9,7 @@
  *
  * Model version              : 1.9
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Mar 10 14:18:01 2023
+ * C source code generated on : Thu Mar 16 17:10:14 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -76,12 +76,12 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&set_heave_Eva_B.Constant1), 0, 0, 4 }
+  { (char_T *)(&set_heave_Eva_B.Constant1), 0, 0, 3 }
   ,
 
   { (char_T *)(&set_heave_Eva_DW.lastSin), 0, 0, 2 },
 
-  { (char_T *)(&set_heave_Eva_DW.AnalogOutput_PWORK), 11, 0, 6 },
+  { (char_T *)(&set_heave_Eva_DW.AnalogOutput_PWORK), 11, 0, 5 },
 
   { (char_T *)(&set_heave_Eva_DW.systemEnable), 6, 0, 1 }
 };

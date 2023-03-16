@@ -9,7 +9,7 @@
  *
  * Model version              : 1.9
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Mar 10 14:18:01 2023
+ * C source code generated on : Thu Mar 16 17:10:14 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -859,7 +859,6 @@
 /* Block signals (default storage) */
 typedef struct {
   real_T Constant1;                    /* '<Root>/Constant1' */
-  real_T Sum;                          /* '<Root>/Sum' */
   real_T MeasuredPosition;             /* '<Root>/Bias3' */
   real_T CommandedPosition;            /* '<Root>/Gain7' */
 } B_set_heave_Eva_T;
@@ -873,10 +872,6 @@ typedef struct {
   struct {
     void *LoggedData;
   } Scope1_PWORK;                      /* '<Root>/Scope1' */
-
-  struct {
-    void *LoggedData;
-  } Scope2_PWORK;                      /* '<Root>/Scope2' */
 
   struct {
     void *LoggedData;
@@ -957,7 +952,7 @@ struct P_set_heave_Eva_T_ {
   real_T SineWave1_PCos;               /* Computed Parameter: SineWave1_PCos
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
-  real_T Constant1_Value;              /* Expression: 10
+  real_T Constant1_Value;              /* Expression: 0
                                         * Referenced by: '<Root>/Constant1'
                                         */
   real_T Gain1_Gain;                   /* Expression: -1/(2*3)

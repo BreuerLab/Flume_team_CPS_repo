@@ -9,7 +9,7 @@
  *
  * Model version              : 1.9
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Mar 10 14:18:01 2023
+ * C source code generated on : Thu Mar 16 17:10:14 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -62,6 +62,7 @@ RT_MODEL_set_heave_Eva_T *const set_heave_Eva_M = &set_heave_Eva_M_;
 void set_heave_Eva_output(void)
 {
   real_T rtb_EncoderInput;
+  real_T rtb_Sum;
 
   /* Sin: '<Root>/Sine Wave1' */
   if (set_heave_Eva_DW.systemEnable != 0) {
@@ -72,6 +73,16 @@ void set_heave_Eva_output(void)
     set_heave_Eva_DW.systemEnable = 0;
   }
 
+  rtb_EncoderInput = ((set_heave_Eva_DW.lastSin * set_heave_Eva_P.SineWave1_PCos
+                       + set_heave_Eva_DW.lastCos *
+                       set_heave_Eva_P.SineWave1_PSin) *
+                      set_heave_Eva_P.SineWave1_HCos + (set_heave_Eva_DW.lastCos
+    * set_heave_Eva_P.SineWave1_PCos - set_heave_Eva_DW.lastSin *
+    set_heave_Eva_P.SineWave1_PSin) * set_heave_Eva_P.SineWave1_Hsin) *
+    set_heave_Eva_P.SineWave1_Amp + set_heave_Eva_P.SineWave1_Bias;
+
+  /* End of Sin: '<Root>/Sine Wave1' */
+
   /* Constant: '<Root>/Constant1' */
   set_heave_Eva_B.Constant1 = set_heave_Eva_P.Constant1_Value;
 
@@ -79,23 +90,15 @@ void set_heave_Eva_output(void)
    *  Constant: '<Root>/Constant2'
    *  Sum: '<Root>/Sum1'
    */
-  rtb_EncoderInput = (set_heave_Eva_B.Constant1 -
-                      set_heave_Eva_P.start_position_cm) *
+  rtb_Sum = (set_heave_Eva_B.Constant1 - set_heave_Eva_P.start_position_cm) *
     set_heave_Eva_P.Gain1_Gain;
 
   /* Sum: '<Root>/Sum' incorporates:
    *  Bias: '<Root>/Bias'
    *  Product: '<Root>/Product'
-   *  Sin: '<Root>/Sine Wave1'
    */
-  set_heave_Eva_B.Sum = ((((set_heave_Eva_DW.lastSin *
-    set_heave_Eva_P.SineWave1_PCos + set_heave_Eva_DW.lastCos *
-    set_heave_Eva_P.SineWave1_PSin) * set_heave_Eva_P.SineWave1_HCos +
-    (set_heave_Eva_DW.lastCos * set_heave_Eva_P.SineWave1_PCos -
-     set_heave_Eva_DW.lastSin * set_heave_Eva_P.SineWave1_PSin) *
-    set_heave_Eva_P.SineWave1_Hsin) * set_heave_Eva_P.SineWave1_Amp +
-    set_heave_Eva_P.SineWave1_Bias) * rtb_EncoderInput +
-    set_heave_Eva_P.start_position_cm / -3.0) + rtb_EncoderInput;
+  rtb_Sum += rtb_EncoderInput * rtb_Sum + set_heave_Eva_P.start_position_cm /
+    -3.0;
 
   /* S-Function (sldrtao): '<Root>/Analog Output' */
   /* S-Function Block: <Root>/Analog Output */
@@ -106,7 +109,7 @@ void set_heave_Eva_output(void)
       parm.rangeidx = set_heave_Eva_P.AnalogOutput_VoltRange;
       RTBIO_DriverIO(0, ANALOGOUTPUT, IOWRITE, 1,
                      &set_heave_Eva_P.AnalogOutput_Channels, ((real_T*)
-        (&set_heave_Eva_B.Sum)), &parm);
+        (&rtb_Sum)), &parm);
     }
   }
 
@@ -129,8 +132,7 @@ void set_heave_Eva_output(void)
     rtb_EncoderInput + set_heave_Eva_P.start_position_cm;
 
   /* Gain: '<Root>/Gain7' */
-  set_heave_Eva_B.CommandedPosition = set_heave_Eva_P.Gain7_Gain *
-    set_heave_Eva_B.Sum;
+  set_heave_Eva_B.CommandedPosition = set_heave_Eva_P.Gain7_Gain * rtb_Sum;
 }
 
 /* Model update function */
@@ -283,10 +285,10 @@ RT_MODEL_set_heave_Eva_T *set_heave_Eva(void)
   set_heave_Eva_M->Timing.stepSize0 = 0.001;
 
   /* External mode info */
-  set_heave_Eva_M->Sizes.checksums[0] = (3819089990U);
-  set_heave_Eva_M->Sizes.checksums[1] = (2258989693U);
-  set_heave_Eva_M->Sizes.checksums[2] = (1839937404U);
-  set_heave_Eva_M->Sizes.checksums[3] = (3483292221U);
+  set_heave_Eva_M->Sizes.checksums[0] = (2383692524U);
+  set_heave_Eva_M->Sizes.checksums[1] = (316623931U);
+  set_heave_Eva_M->Sizes.checksums[2] = (4146471418U);
+  set_heave_Eva_M->Sizes.checksums[3] = (1755555141U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -343,8 +345,8 @@ RT_MODEL_set_heave_Eva_T *set_heave_Eva(void)
   set_heave_Eva_M->Sizes.numU = (0);   /* Number of model inputs */
   set_heave_Eva_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   set_heave_Eva_M->Sizes.numSampTimes = (1);/* Number of sample times */
-  set_heave_Eva_M->Sizes.numBlocks = (17);/* Number of blocks */
-  set_heave_Eva_M->Sizes.numBlockIO = (4);/* Number of block outputs */
+  set_heave_Eva_M->Sizes.numBlocks = (16);/* Number of blocks */
+  set_heave_Eva_M->Sizes.numBlockIO = (3);/* Number of block outputs */
   set_heave_Eva_M->Sizes.numBlockPrms = (21);/* Sum of parameter "widths" */
   return set_heave_Eva_M;
 }
