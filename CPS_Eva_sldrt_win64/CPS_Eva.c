@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.34
+ * Model version              : 1.39
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Wed Mar 15 18:42:35 2023
+ * C source code generated on : Thu Mar 23 16:28:32 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -20,6 +20,7 @@
 
 #include "CPS_Eva.h"
 #include "rtwtypes.h"
+#include <math.h>
 #include <emmintrin.h>
 #include "CPS_Eva_private.h"
 #include <string.h>
@@ -51,7 +52,7 @@ static double SLDRTBoardOptions1[] = {
 /* list of Simulink Desktop Real-Time timers */
 const int SLDRTTimerCount = 1;
 const double SLDRTTimers[2] = {
-  0.001, 0.0,
+  0.0002, 0.0,
 };
 
 /* list of Simulink Desktop Real-Time boards */
@@ -439,6 +440,21 @@ void CPS_Eva_output(void)
      */
     CPS_Eva_B.MeasuredPosition = CPS_Eva_P.Gain8_Gain * rtb_EncoderInput +
       CPS_Eva_P.start_position_cm;
+  }
+
+  /* RelationalOperator: '<Root>/GreaterThan' incorporates:
+   *  Abs: '<Root>/Abs'
+   *  Constant: '<Root>/Constant5'
+   */
+  CPS_Eva_B.GreaterThan = (fabs(CPS_Eva_B.Fy_plus_ma_filtered) >
+    CPS_Eva_P.Constant5_Value);
+  if (rtmIsMajorTimeStep(CPS_Eva_M)) {
+    /* Stop: '<Root>/Stop Simulation' */
+    if (CPS_Eva_B.GreaterThan) {
+      rtmSetStopRequested(CPS_Eva_M, 1);
+    }
+
+    /* End of Stop: '<Root>/Stop Simulation' */
 
     /* Gain: '<Root>/Gain11' */
     CPS_Eva_B.torque_z = CPS_Eva_P.Gain11_Gain * CPS_Eva_B.Gain[5];
@@ -516,7 +532,7 @@ void CPS_Eva_update(void)
   CPS_Eva_M->Timing.t[0] = rtsiGetSolverStopTime(&CPS_Eva_M->solverInfo);
 
   {
-    /* Update absolute timer for sample time: [0.001s, 0.0s] */
+    /* Update absolute timer for sample time: [0.0002s, 0.0s] */
     /* The "clockTick1" counts the number of times the code of this task has
      * been executed. The absolute time is the multiplication of "clockTick1"
      * and "Timing.stepSize1". Size of "clockTick1" ensures timer will not
@@ -775,7 +791,7 @@ RT_MODEL_CPS_Eva_T *CPS_Eva(void)
 
     /* task periods */
     CPS_Eva_M->Timing.sampleTimes[0] = (0.0);
-    CPS_Eva_M->Timing.sampleTimes[1] = (0.001);
+    CPS_Eva_M->Timing.sampleTimes[1] = (0.0002);
 
     /* task offsets */
     CPS_Eva_M->Timing.offsetTimes[0] = (0.0);
@@ -791,15 +807,15 @@ RT_MODEL_CPS_Eva_T *CPS_Eva(void)
     CPS_Eva_M->Timing.sampleHits = (&mdlSampleHits[0]);
   }
 
-  rtmSetTFinal(CPS_Eva_M, 32.087);
-  CPS_Eva_M->Timing.stepSize0 = 0.001;
-  CPS_Eva_M->Timing.stepSize1 = 0.001;
+  rtmSetTFinal(CPS_Eva_M, 37.8378);
+  CPS_Eva_M->Timing.stepSize0 = 0.0002;
+  CPS_Eva_M->Timing.stepSize1 = 0.0002;
 
   /* External mode info */
-  CPS_Eva_M->Sizes.checksums[0] = (2802784292U);
-  CPS_Eva_M->Sizes.checksums[1] = (2247436375U);
-  CPS_Eva_M->Sizes.checksums[2] = (3197540645U);
-  CPS_Eva_M->Sizes.checksums[3] = (2081280988U);
+  CPS_Eva_M->Sizes.checksums[0] = (969640529U);
+  CPS_Eva_M->Sizes.checksums[1] = (3509463461U);
+  CPS_Eva_M->Sizes.checksums[2] = (3992140390U);
+  CPS_Eva_M->Sizes.checksums[3] = (1228778901U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -818,8 +834,8 @@ RT_MODEL_CPS_Eva_T *CPS_Eva(void)
   }
 
   CPS_Eva_M->solverInfoPtr = (&CPS_Eva_M->solverInfo);
-  CPS_Eva_M->Timing.stepSize = (0.001);
-  rtsiSetFixedStepSize(&CPS_Eva_M->solverInfo, 0.001);
+  CPS_Eva_M->Timing.stepSize = (0.0002);
+  rtsiSetFixedStepSize(&CPS_Eva_M->solverInfo, 0.0002);
   rtsiSetSolverMode(&CPS_Eva_M->solverInfo, SOLVER_MODE_SINGLETASKING);
 
   /* block I/O */
@@ -868,9 +884,9 @@ RT_MODEL_CPS_Eva_T *CPS_Eva(void)
   CPS_Eva_M->Sizes.numU = (0);         /* Number of model inputs */
   CPS_Eva_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   CPS_Eva_M->Sizes.numSampTimes = (2); /* Number of sample times */
-  CPS_Eva_M->Sizes.numBlocks = (49);   /* Number of blocks */
-  CPS_Eva_M->Sizes.numBlockIO = (16);  /* Number of block outputs */
-  CPS_Eva_M->Sizes.numBlockPrms = (132);/* Sum of parameter "widths" */
+  CPS_Eva_M->Sizes.numBlocks = (53);   /* Number of blocks */
+  CPS_Eva_M->Sizes.numBlockIO = (17);  /* Number of block outputs */
+  CPS_Eva_M->Sizes.numBlockPrms = (133);/* Sum of parameter "widths" */
   return CPS_Eva_M;
 }
 

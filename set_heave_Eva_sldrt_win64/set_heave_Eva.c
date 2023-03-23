@@ -7,9 +7,9 @@
  *
  * Code generation for model "set_heave_Eva".
  *
- * Model version              : 1.9
+ * Model version              : 1.15
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Mar 16 17:10:14 2023
+ * C source code generated on : Thu Mar 23 16:21:44 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -39,7 +39,7 @@ static double SLDRTBoardOptions0[] = {
 /* list of Simulink Desktop Real-Time timers */
 const int SLDRTTimerCount = 1;
 const double SLDRTTimers[2] = {
-  0.001, 0.0,
+  0.0002, 0.0,
 };
 
 /* list of Simulink Desktop Real-Time boards */
@@ -62,7 +62,6 @@ RT_MODEL_set_heave_Eva_T *const set_heave_Eva_M = &set_heave_Eva_M_;
 void set_heave_Eva_output(void)
 {
   real_T rtb_EncoderInput;
-  real_T rtb_Sum;
 
   /* Sin: '<Root>/Sine Wave1' */
   if (set_heave_Eva_DW.systemEnable != 0) {
@@ -73,16 +72,6 @@ void set_heave_Eva_output(void)
     set_heave_Eva_DW.systemEnable = 0;
   }
 
-  rtb_EncoderInput = ((set_heave_Eva_DW.lastSin * set_heave_Eva_P.SineWave1_PCos
-                       + set_heave_Eva_DW.lastCos *
-                       set_heave_Eva_P.SineWave1_PSin) *
-                      set_heave_Eva_P.SineWave1_HCos + (set_heave_Eva_DW.lastCos
-    * set_heave_Eva_P.SineWave1_PCos - set_heave_Eva_DW.lastSin *
-    set_heave_Eva_P.SineWave1_PSin) * set_heave_Eva_P.SineWave1_Hsin) *
-    set_heave_Eva_P.SineWave1_Amp + set_heave_Eva_P.SineWave1_Bias;
-
-  /* End of Sin: '<Root>/Sine Wave1' */
-
   /* Constant: '<Root>/Constant1' */
   set_heave_Eva_B.Constant1 = set_heave_Eva_P.Constant1_Value;
 
@@ -90,15 +79,27 @@ void set_heave_Eva_output(void)
    *  Constant: '<Root>/Constant2'
    *  Sum: '<Root>/Sum1'
    */
-  rtb_Sum = (set_heave_Eva_B.Constant1 - set_heave_Eva_P.start_position_cm) *
+  rtb_EncoderInput = (set_heave_Eva_B.Constant1 -
+                      set_heave_Eva_P.start_position_cm) *
     set_heave_Eva_P.Gain1_Gain;
 
   /* Sum: '<Root>/Sum' incorporates:
    *  Bias: '<Root>/Bias'
    *  Product: '<Root>/Product'
+   *  Sin: '<Root>/Sine Wave1'
    */
-  rtb_Sum += rtb_EncoderInput * rtb_Sum + set_heave_Eva_P.start_position_cm /
-    -3.0;
+  set_heave_Eva_B.CommandedPosition = ((((set_heave_Eva_DW.lastSin *
+    set_heave_Eva_P.SineWave1_PCos + set_heave_Eva_DW.lastCos *
+    set_heave_Eva_P.SineWave1_PSin) * set_heave_Eva_P.SineWave1_HCos +
+    (set_heave_Eva_DW.lastCos * set_heave_Eva_P.SineWave1_PCos -
+     set_heave_Eva_DW.lastSin * set_heave_Eva_P.SineWave1_PSin) *
+    set_heave_Eva_P.SineWave1_Hsin) * set_heave_Eva_P.SineWave1_Amp +
+    set_heave_Eva_P.SineWave1_Bias) * rtb_EncoderInput +
+    set_heave_Eva_P.start_position_cm) + rtb_EncoderInput;
+
+  /* Gain: '<Root>/Gain2' */
+  rtb_EncoderInput = set_heave_Eva_P.Gain2_Gain *
+    set_heave_Eva_B.CommandedPosition;
 
   /* S-Function (sldrtao): '<Root>/Analog Output' */
   /* S-Function Block: <Root>/Analog Output */
@@ -109,7 +110,7 @@ void set_heave_Eva_output(void)
       parm.rangeidx = set_heave_Eva_P.AnalogOutput_VoltRange;
       RTBIO_DriverIO(0, ANALOGOUTPUT, IOWRITE, 1,
                      &set_heave_Eva_P.AnalogOutput_Channels, ((real_T*)
-        (&rtb_Sum)), &parm);
+        (&rtb_EncoderInput)), &parm);
     }
   }
 
@@ -130,9 +131,6 @@ void set_heave_Eva_output(void)
    */
   set_heave_Eva_B.MeasuredPosition = set_heave_Eva_P.Gain8_Gain *
     rtb_EncoderInput + set_heave_Eva_P.start_position_cm;
-
-  /* Gain: '<Root>/Gain7' */
-  set_heave_Eva_B.CommandedPosition = set_heave_Eva_P.Gain7_Gain * rtb_Sum;
 }
 
 /* Model update function */
@@ -267,7 +265,7 @@ RT_MODEL_set_heave_Eva_T *set_heave_Eva(void)
       (&set_heave_Eva_M->Timing.offsetTimesArray[0]);
 
     /* task periods */
-    set_heave_Eva_M->Timing.sampleTimes[0] = (0.001);
+    set_heave_Eva_M->Timing.sampleTimes[0] = (0.0002);
 
     /* task offsets */
     set_heave_Eva_M->Timing.offsetTimes[0] = (0.0);
@@ -282,13 +280,13 @@ RT_MODEL_set_heave_Eva_T *set_heave_Eva(void)
   }
 
   rtmSetTFinal(set_heave_Eva_M, 7.0);
-  set_heave_Eva_M->Timing.stepSize0 = 0.001;
+  set_heave_Eva_M->Timing.stepSize0 = 0.0002;
 
   /* External mode info */
-  set_heave_Eva_M->Sizes.checksums[0] = (2383692524U);
-  set_heave_Eva_M->Sizes.checksums[1] = (316623931U);
-  set_heave_Eva_M->Sizes.checksums[2] = (4146471418U);
-  set_heave_Eva_M->Sizes.checksums[3] = (1755555141U);
+  set_heave_Eva_M->Sizes.checksums[0] = (2828686128U);
+  set_heave_Eva_M->Sizes.checksums[1] = (1562523232U);
+  set_heave_Eva_M->Sizes.checksums[2] = (1237500945U);
+  set_heave_Eva_M->Sizes.checksums[3] = (1872325896U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -305,8 +303,8 @@ RT_MODEL_set_heave_Eva_T *set_heave_Eva(void)
   }
 
   set_heave_Eva_M->solverInfoPtr = (&set_heave_Eva_M->solverInfo);
-  set_heave_Eva_M->Timing.stepSize = (0.001);
-  rtsiSetFixedStepSize(&set_heave_Eva_M->solverInfo, 0.001);
+  set_heave_Eva_M->Timing.stepSize = (0.0002);
+  rtsiSetFixedStepSize(&set_heave_Eva_M->solverInfo, 0.0002);
   rtsiSetSolverMode(&set_heave_Eva_M->solverInfo, SOLVER_MODE_SINGLETASKING);
 
   /* block I/O */

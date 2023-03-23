@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_tare_Eva".
  *
- * Model version              : 1.7
+ * Model version              : 1.8
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Fri Feb 24 13:07:44 2023
+ * C source code generated on : Thu Mar 23 11:18:13 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -49,7 +49,7 @@ static double SLDRTBoardOptions1[] = {
 /* list of Simulink Desktop Real-Time timers */
 const int SLDRTTimerCount = 1;
 const double SLDRTTimers[2] = {
-  0.001, 0.0,
+  0.0002, 0.0,
 };
 
 /* list of Simulink Desktop Real-Time boards */
@@ -243,7 +243,7 @@ RT_MODEL_CPS_tare_Eva_T *CPS_tare_Eva(void)
       (&CPS_tare_Eva_M->Timing.offsetTimesArray[0]);
 
     /* task periods */
-    CPS_tare_Eva_M->Timing.sampleTimes[0] = (0.001);
+    CPS_tare_Eva_M->Timing.sampleTimes[0] = (0.0002);
 
     /* task offsets */
     CPS_tare_Eva_M->Timing.offsetTimes[0] = (0.0);
@@ -258,13 +258,13 @@ RT_MODEL_CPS_tare_Eva_T *CPS_tare_Eva(void)
   }
 
   rtmSetTFinal(CPS_tare_Eva_M, 10.0);
-  CPS_tare_Eva_M->Timing.stepSize0 = 0.001;
+  CPS_tare_Eva_M->Timing.stepSize0 = 0.0002;
 
   /* External mode info */
-  CPS_tare_Eva_M->Sizes.checksums[0] = (976782287U);
-  CPS_tare_Eva_M->Sizes.checksums[1] = (2979383981U);
-  CPS_tare_Eva_M->Sizes.checksums[2] = (1478298133U);
-  CPS_tare_Eva_M->Sizes.checksums[3] = (3773855458U);
+  CPS_tare_Eva_M->Sizes.checksums[0] = (2253807961U);
+  CPS_tare_Eva_M->Sizes.checksums[1] = (565492665U);
+  CPS_tare_Eva_M->Sizes.checksums[2] = (2718471154U);
+  CPS_tare_Eva_M->Sizes.checksums[3] = (289717946U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -281,8 +281,8 @@ RT_MODEL_CPS_tare_Eva_T *CPS_tare_Eva(void)
   }
 
   CPS_tare_Eva_M->solverInfoPtr = (&CPS_tare_Eva_M->solverInfo);
-  CPS_tare_Eva_M->Timing.stepSize = (0.001);
-  rtsiSetFixedStepSize(&CPS_tare_Eva_M->solverInfo, 0.001);
+  CPS_tare_Eva_M->Timing.stepSize = (0.0002);
+  rtsiSetFixedStepSize(&CPS_tare_Eva_M->solverInfo, 0.0002);
   rtsiSetSolverMode(&CPS_tare_Eva_M->solverInfo, SOLVER_MODE_SINGLETASKING);
 
   /* block I/O */

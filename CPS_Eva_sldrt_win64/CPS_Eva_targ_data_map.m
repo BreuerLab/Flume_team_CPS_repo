@@ -158,8 +158,8 @@
             paramMap.sections(2) = section;
             clear section
 
-            section.nData     = 23;
-            section.data(23)  = dumData; %prealloc
+            section.nData     = 24;
+            section.data(24)  = dumData; %prealloc
 
                     ;% CPS_Eva_P.Gain9_Gain
                     section.data(1).logicalSrcIdx = 33;
@@ -241,17 +241,21 @@
                     section.data(20).logicalSrcIdx = 52;
                     section.data(20).dtTransOffset = 30;
 
-                    ;% CPS_Eva_P.Gain11_Gain
+                    ;% CPS_Eva_P.Constant5_Value
                     section.data(21).logicalSrcIdx = 53;
                     section.data(21).dtTransOffset = 31;
 
-                    ;% CPS_Eva_P.Bias2_Bias
+                    ;% CPS_Eva_P.Gain11_Gain
                     section.data(22).logicalSrcIdx = 54;
                     section.data(22).dtTransOffset = 32;
 
-                    ;% CPS_Eva_P.Gain4_Gain
+                    ;% CPS_Eva_P.Bias2_Bias
                     section.data(23).logicalSrcIdx = 55;
                     section.data(23).dtTransOffset = 33;
+
+                    ;% CPS_Eva_P.Gain4_Gain
+                    section.data(24).logicalSrcIdx = 56;
+                    section.data(24).dtTransOffset = 34;
 
             nTotData = nTotData + section.nData;
             paramMap.sections(3) = section;
@@ -261,27 +265,27 @@
             section.data(6)  = dumData; %prealloc
 
                     ;% CPS_Eva_P.AnalogFilterDesign_A_ir
-                    section.data(1).logicalSrcIdx = 56;
+                    section.data(1).logicalSrcIdx = 57;
                     section.data(1).dtTransOffset = 0;
 
                     ;% CPS_Eva_P.AnalogFilterDesign_A_jc
-                    section.data(2).logicalSrcIdx = 57;
+                    section.data(2).logicalSrcIdx = 58;
                     section.data(2).dtTransOffset = 7;
 
                     ;% CPS_Eva_P.AnalogFilterDesign_B_ir
-                    section.data(3).logicalSrcIdx = 58;
+                    section.data(3).logicalSrcIdx = 59;
                     section.data(3).dtTransOffset = 12;
 
                     ;% CPS_Eva_P.AnalogFilterDesign_B_jc
-                    section.data(4).logicalSrcIdx = 59;
+                    section.data(4).logicalSrcIdx = 60;
                     section.data(4).dtTransOffset = 13;
 
                     ;% CPS_Eva_P.AnalogFilterDesign_C_ir
-                    section.data(5).logicalSrcIdx = 60;
+                    section.data(5).logicalSrcIdx = 61;
                     section.data(5).dtTransOffset = 15;
 
                     ;% CPS_Eva_P.AnalogFilterDesign_C_jc
-                    section.data(6).logicalSrcIdx = 61;
+                    section.data(6).logicalSrcIdx = 62;
                     section.data(6).dtTransOffset = 16;
 
             nTotData = nTotData + section.nData;
@@ -292,19 +296,19 @@
             section.data(4)  = dumData; %prealloc
 
                     ;% CPS_Eva_P.Sineorcustomtrajectory_CurrentSetting
-                    section.data(1).logicalSrcIdx = 62;
+                    section.data(1).logicalSrcIdx = 63;
                     section.data(1).dtTransOffset = 0;
 
                     ;% CPS_Eva_P.Signalorzero_CurrentSetting
-                    section.data(2).logicalSrcIdx = 63;
+                    section.data(2).logicalSrcIdx = 64;
                     section.data(2).dtTransOffset = 1;
 
                     ;% CPS_Eva_P.CPSorReference_CurrentSetting
-                    section.data(3).logicalSrcIdx = 64;
+                    section.data(3).logicalSrcIdx = 65;
                     section.data(3).dtTransOffset = 2;
 
                     ;% CPS_Eva_P.zeropitchorconstant_CurrentSetting
-                    section.data(4).logicalSrcIdx = 65;
+                    section.data(4).logicalSrcIdx = 66;
                     section.data(4).dtTransOffset = 3;
 
             nTotData = nTotData + section.nData;
@@ -329,7 +333,7 @@
     ;%**************************
     
         nTotData      = 0; %add to this count as we go
-        nTotSects     = 1;
+        nTotSects     = 2;
         sectIdxOffset = 0;
 
         ;%
@@ -423,6 +427,17 @@
             sigMap.sections(1) = section;
             clear section
 
+            section.nData     = 1;
+            section.data(1)  = dumData; %prealloc
+
+                    ;% CPS_Eva_B.GreaterThan
+                    section.data(1).logicalSrcIdx = 16;
+                    section.data(1).dtTransOffset = 0;
+
+            nTotData = nTotData + section.nData;
+            sigMap.sections(2) = section;
+            clear section
+
 
             ;%
             ;% Non-auto Data (signal)
@@ -442,7 +457,7 @@
     
         nTotData      = 0; %add to this count as we go
         nTotSects     = 3;
-        sectIdxOffset = 1;
+        sectIdxOffset = 2;
 
         ;%
         ;% Define dummy sections & preallocate arrays
@@ -571,8 +586,8 @@
     ;%
 
 
-    targMap.checksum0 = 2802784292;
-    targMap.checksum1 = 2247436375;
-    targMap.checksum2 = 3197540645;
-    targMap.checksum3 = 2081280988;
+    targMap.checksum0 = 969640529;
+    targMap.checksum1 = 3509463461;
+    targMap.checksum2 = 3992140390;
+    targMap.checksum3 = 1228778901;
 

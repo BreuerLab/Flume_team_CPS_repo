@@ -7,9 +7,9 @@
  *
  * Code generation for model "set_heave_Eva".
  *
- * Model version              : 1.9
+ * Model version              : 1.15
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Thu Mar 16 17:10:14 2023
+ * C source code generated on : Thu Mar 23 16:21:44 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -859,8 +859,8 @@
 /* Block signals (default storage) */
 typedef struct {
   real_T Constant1;                    /* '<Root>/Constant1' */
+  real_T CommandedPosition;            /* '<Root>/Sum' */
   real_T MeasuredPosition;             /* '<Root>/Bias3' */
-  real_T CommandedPosition;            /* '<Root>/Gain7' */
 } B_set_heave_Eva_T;
 
 /* Block states (default storage) for system '<Root>' */
@@ -931,7 +931,7 @@ struct P_set_heave_Eva_T_ {
   int32_T AnalogOutput_VoltRange;      /* Mask Parameter: AnalogOutput_VoltRange
                                         * Referenced by: '<Root>/Analog Output'
                                         */
-  real_T SineWave1_Amp;                /* Expression: -1
+  real_T SineWave1_Amp;                /* Expression: 1
                                         * Referenced by: '<Root>/Sine Wave1'
                                         */
   real_T SineWave1_Bias;               /* Expression: 0
@@ -955,14 +955,14 @@ struct P_set_heave_Eva_T_ {
   real_T Constant1_Value;              /* Expression: 0
                                         * Referenced by: '<Root>/Constant1'
                                         */
-  real_T Gain1_Gain;                   /* Expression: -1/(2*3)
+  real_T Gain1_Gain;                   /* Expression: 1/2
                                         * Referenced by: '<Root>/Gain1'
+                                        */
+  real_T Gain2_Gain;                   /* Expression: (-1/3)/0.9934
+                                        * Referenced by: '<Root>/Gain2'
                                         */
   real_T Gain8_Gain;                   /* Expression: 1*(1/(4*2000))*2.54
                                         * Referenced by: '<Root>/Gain8'
-                                        */
-  real_T Gain7_Gain;                   /* Expression: -3
-                                        * Referenced by: '<Root>/Gain7'
                                         */
 };
 

@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.34
+ * Model version              : 1.39
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Wed Mar 15 18:42:35 2023
+ * C source code generated on : Thu Mar 23 16:28:32 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -38,19 +38,19 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Variable: M
    * Referenced by: '<Root>/Gain3'
    */
-  5.0,
+  5.12,
 
   /* Variable: c
    * Referenced by: '<Root>/Constant1'
    */
-  2.4931679298888603,
+  0.16764347164777121,
 
   /* Variable: k
    * Referenced by:
    *   '<Root>/Constant2'
    *   '<Root>/Unit Delay'
    */
-  124.31772653252605,
+  127.06314012820582,
 
   /* Variable: start_position_cm
    * Referenced by:
@@ -58,7 +58,7 @@ P_CPS_Eva_T CPS_Eva_P = {
    *   '<Root>/Discrete-Time Integrator1'
    *   '<Root>/Unit Delay'
    */
-  -1.6395700000000004,
+  0.0,
 
   /* Mask Parameter: EncoderInput_InputFilter
    * Referenced by: '<Root>/Encoder Input'
@@ -118,7 +118,7 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Mask Parameter: AnalogOutput_Channels
    * Referenced by: '<Root>/Analog Output'
    */
-  1,
+  3,
 
   /* Mask Parameter: AnalogOutput1_Channels
    * Referenced by: '<Root>/Analog Output1'
@@ -210,7 +210,7 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Computed Parameter: DiscreteTimeIntegrator_gainval
    * Referenced by: '<Root>/Discrete-Time Integrator'
    */
-  0.0005,
+  0.0001,
 
   /* Expression: 0
    * Referenced by: '<Root>/Discrete-Time Integrator'
@@ -220,17 +220,17 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Computed Parameter: DiscreteTimeIntegrator1_gainval
    * Referenced by: '<Root>/Discrete-Time Integrator1'
    */
-  0.0005,
+  0.0001,
 
   /* Expression: 0
    * Referenced by: '<Root>/Constant3'
    */
   0.0,
 
-  /* Expression: -1/0.03
+  /* Expression: (-1/0.03)/0.9934
    * Referenced by: '<Root>/Gain6'
    */
-  -33.333333333333336,
+  -33.554794980202672,
 
   /* Expression: 0.5
    * Referenced by: '<Root>/Constant4'
@@ -245,8 +245,8 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Expression: -tare.signals.values(end,1:6)
    * Referenced by: '<Root>/Bias'
    */
-  { 0.059426528176812835, -0.35485293829582043, 0.4541970892974444,
-    -0.852941725502833, -0.17925733243996622, 0.22625420649768371 },
+  { 0.051757180299935333, -0.30295089267055209, 0.44202287538531559,
+    -0.79598981255110257, -0.163119348669759, 0.2357938090291084 },
 
   /* Expression: -1
    * Referenced by: '<Root>/Gain5'
@@ -256,17 +256,17 @@ P_CPS_Eva_T CPS_Eva_P = {
   /* Expression: -tare.signals.values(end,7)
    * Referenced by: '<Root>/Bias1'
    */
-  -1.6773494892947263,
+  -1.6750293769321036,
 
   /* Expression: 9.81
    * Referenced by: '<Root>/Gain1'
    */
   9.81,
 
-  /* Expression: 0.6+0.302
+  /* Expression: 0.6+0.386
    * Referenced by: '<Root>/Gain2'
    */
-  0.90199999999999991,
+  0.986,
 
   /* Expression: 0
    * Referenced by: '<Root>/Constant'
@@ -282,6 +282,11 @@ P_CPS_Eva_T CPS_Eva_P = {
    * Referenced by: '<Root>/Gain8'
    */
   0.0003175,
+
+  /* Expression: 10
+   * Referenced by: '<Root>/Constant5'
+   */
+  10.0,
 
   /* Expression: -1
    * Referenced by: '<Root>/Gain11'

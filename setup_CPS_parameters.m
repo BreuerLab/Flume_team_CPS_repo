@@ -1,6 +1,6 @@
 % CPS parametric setup
 % run it to pre-set the required parameters, e.g. sampling time;
-sample_rate=1000;
+sample_rate=5000;
 T=1/sample_rate;
 start_position_cm = 0; % Initial heave position in meters
 model_shape="circcyl";
@@ -9,7 +9,7 @@ enviornment="water";
 %% System parameters
 M = 10; % 10 simulated mass in kg
 dampratio = 0.1; % 0.1 damping ratio
-f_nat = 1.5; % 1 natural frequency in Hz
+f_nat = 1; % 1 natural frequency in Hz
 
     k = (2*pi*f_nat)^2*M;
     c = 2*dampratio*sqrt(k*M);

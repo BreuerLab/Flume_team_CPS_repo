@@ -7,9 +7,9 @@
  *
  * Code generation for model "CPS_Eva".
  *
- * Model version              : 1.34
+ * Model version              : 1.39
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Wed Mar 15 18:42:35 2023
+ * C source code generated on : Thu Mar 23 16:28:32 2023
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -882,6 +882,7 @@ typedef struct {
   real_T Gain4[4];                     /* '<Root>/Gain4' */
   real_T Add;                          /* '<Root>/Add' */
   real_T Sum1;                         /* '<Root>/Sum1' */
+  boolean_T GreaterThan;               /* '<Root>/GreaterThan' */
 } B_CPS_Eva_T;
 
 /* Block states (default storage) for system '<Root>' */
@@ -1095,7 +1096,7 @@ struct P_CPS_Eva_T_ {
   real_T Constant3_Value;              /* Expression: 0
                                         * Referenced by: '<Root>/Constant3'
                                         */
-  real_T Gain6_Gain;                   /* Expression: -1/0.03
+  real_T Gain6_Gain;                   /* Expression: (-1/0.03)/0.9934
                                         * Referenced by: '<Root>/Gain6'
                                         */
   real_T Constant4_Value;              /* Expression: 0.5
@@ -1116,7 +1117,7 @@ struct P_CPS_Eva_T_ {
   real_T Gain1_Gain;                   /* Expression: 9.81
                                         * Referenced by: '<Root>/Gain1'
                                         */
-  real_T Gain2_Gain;                   /* Expression: 0.6+0.302
+  real_T Gain2_Gain;                   /* Expression: 0.6+0.386
                                         * Referenced by: '<Root>/Gain2'
                                         */
   real_T Constant_Value;               /* Expression: 0
@@ -1127,6 +1128,9 @@ struct P_CPS_Eva_T_ {
                                         */
   real_T Gain8_Gain;                   /* Expression: 1*(1/(4*2000))*2.54
                                         * Referenced by: '<Root>/Gain8'
+                                        */
+  real_T Constant5_Value;              /* Expression: 10
+                                        * Referenced by: '<Root>/Constant5'
                                         */
   real_T Gain11_Gain;                  /* Expression: -1
                                         * Referenced by: '<Root>/Gain11'

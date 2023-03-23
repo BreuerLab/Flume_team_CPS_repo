@@ -121,11 +121,11 @@
                     section.data(9).logicalSrcIdx = 20;
                     section.data(9).dtTransOffset = 8;
 
-                    ;% set_heave_Eva_P.Gain8_Gain
+                    ;% set_heave_Eva_P.Gain2_Gain
                     section.data(10).logicalSrcIdx = 21;
                     section.data(10).dtTransOffset = 9;
 
-                    ;% set_heave_Eva_P.Gain7_Gain
+                    ;% set_heave_Eva_P.Gain8_Gain
                     section.data(11).logicalSrcIdx = 22;
                     section.data(11).dtTransOffset = 10;
 
@@ -181,11 +181,11 @@
                     section.data(1).logicalSrcIdx = 0;
                     section.data(1).dtTransOffset = 0;
 
-                    ;% set_heave_Eva_B.MeasuredPosition
+                    ;% set_heave_Eva_B.CommandedPosition
                     section.data(2).logicalSrcIdx = 1;
                     section.data(2).dtTransOffset = 1;
 
-                    ;% set_heave_Eva_B.CommandedPosition
+                    ;% set_heave_Eva_B.MeasuredPosition
                     section.data(3).logicalSrcIdx = 2;
                     section.data(3).dtTransOffset = 2;
 
@@ -313,8 +313,8 @@
     ;%
 
 
-    targMap.checksum0 = 2383692524;
-    targMap.checksum1 = 316623931;
-    targMap.checksum2 = 4146471418;
-    targMap.checksum3 = 1755555141;
+    targMap.checksum0 = 2828686128;
+    targMap.checksum1 = 1562523232;
+    targMap.checksum2 = 1237500945;
+    targMap.checksum3 = 1872325896;
 
